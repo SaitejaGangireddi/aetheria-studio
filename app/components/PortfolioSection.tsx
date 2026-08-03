@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, ChevronRight, Eye, CheckCircle2, Sparkles, X } from "lucide-react";
+import { ExternalLink, CheckCircle2, Sparkles, Eye, X } from "lucide-react";
 
 export default function PortfolioSection() {
   const [activeFilter, setActiveFilter] = useState("all");
@@ -12,22 +12,34 @@ export default function PortfolioSection() {
     {
       id: "katha",
       title: "Katha Studios",
-      category: "Architecture & Interior",
+      category: "Bespoke Architecture & Interior",
       filter: "architecture",
       metric: "+280% High-Ticket Inquiries",
       loadTime: "0.34s Load Speed",
-      image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80",
-      description: "Custom Next.js architecture built for luxury interior design, featuring high-resolution image galleries and automated consultation scheduling.",
+      bgGradient: "from-amber-100/70 via-stone-50/50 to-amber-100/80",
+      borderColor: "border-amber-200/80",
+      previewHeaderBg: "bg-amber-900",
+      heroHeadline: "Elegance Redefined.",
+      heroSub: "Luxury Interior Architecture & Spatial Curation",
+      btnText: "Explore Portfolio",
+      btnBg: "bg-amber-800 text-white",
+      description: "Bespoke interior design and architectural showcase platform built with Next.js App Router, featuring interactive floorplan previews and automated consultation routing.",
     },
     {
       id: "annapurna",
       title: "Annapurna Farms & Seeds",
-      category: "AgriTech & Agriculture",
+      category: "AgriTech & Modern Agriculture",
       filter: "agritech",
       metric: "+195% Wholesale Inquiries",
       loadTime: "0.39s Load Speed",
-      image: "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=800&q=80",
-      description: "Enterprise AgriTech portal engineered for wholesale seed distribution with dynamic catalog filtering and real-time inquiry management.",
+      bgGradient: "from-emerald-100/70 via-teal-50/50 to-emerald-100/80",
+      borderColor: "border-emerald-200/80",
+      previewHeaderBg: "bg-emerald-900",
+      heroHeadline: "Nurturing Growth.",
+      heroSub: "High-Yield Hybrid Seeds & Sustainable AgriTech",
+      btnText: "View Seed Catalog",
+      btnBg: "bg-emerald-800 text-white",
+      description: "Enterprise AgriTech portal engineered for wholesale hybrid seed distribution, featuring dynamic regional product filtering and sub-second rendering speeds.",
     },
     {
       id: "aveorahs",
@@ -36,31 +48,37 @@ export default function PortfolioSection() {
       filter: "architecture",
       metric: "100/100 Core Web Vitals",
       loadTime: "0.31s Load Speed",
-      image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80",
-      description: "Ultra-fast Next.js portfolio showcasing high-end commercial spaces, custom interactive floorplan previews, and sub-second rendering.",
+      bgGradient: "from-purple-100/70 via-indigo-50/50 to-purple-100/80",
+      borderColor: "border-purple-200/80",
+      previewHeaderBg: "bg-slate-900",
+      heroHeadline: "Bespoke Spaces.",
+      heroSub: "Commercial & Private Estate Architecture",
+      btnText: "Book Design Brief",
+      btnBg: "bg-purple-900 text-white",
+      description: "High-end interior architecture site built for luxury commercial projects, optimized for 100/100 Core Web Vitals performance and flawless brand authority.",
     },
   ];
 
   const filteredProjects = activeFilter === "all" ? projects : projects.filter((p) => p.filter === activeFilter);
 
   return (
-    <section id="work" className="py-24 px-6 md:px-12 max-w-7xl mx-auto relative">
-      <div className="text-center max-w-3xl mx-auto mb-12">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-100/60 border border-champagne/30 text-champagne-dark text-xs font-bold uppercase tracking-widest mb-4">
-          <Sparkles className="w-3.5 h-3.5 fill-champagne-dark" />
-          <span>Selected Work</span>
-        </div>
-        <h3 className="text-3xl md:text-5xl font-bold font-serif text-obsidian tracking-tight">
-          Client Showcases & Live Demos
+    <section id="work" className="py-20 px-6 md:px-12 max-w-7xl mx-auto">
+      <div className="text-center max-w-3xl mx-auto mb-10">
+        <span className="text-xs font-extrabold uppercase tracking-widest text-slate-700 bg-white px-4 py-1.5 rounded-full border border-slate-200 shadow-sm inline-flex items-center gap-1.5 mb-3">
+          <Sparkles className="w-3.5 h-3.5 text-champagne" />
+          Client Work
+        </span>
+        <h3 className="text-3xl md:text-4xl font-serif font-bold text-slate-900">
+          Client Showcase & Production Deployments
         </h3>
       </div>
 
-      {/* Interactive Filter Pills */}
-      <div className="flex justify-center gap-3 mb-12 flex-wrap">
+      {/* Interactive Bento Filter Buttons */}
+      <div className="flex justify-center gap-3 mb-10 flex-wrap">
         {[
-          { id: "all", label: "All Masterpieces" },
+          { id: "all", label: "All Production Deploys" },
           { id: "architecture", label: "Interior & Architecture" },
-          { id: "agritech", label: "AgriTech & Enterprise" },
+          { id: "agritech", label: "AgriTech & Agriculture" },
         ].map((btn) => (
           <button
             key={btn.id}
@@ -76,59 +94,95 @@ export default function PortfolioSection() {
         ))}
       </div>
 
-      {/* Animated Project Grid */}
+      {/* Bento Portfolio Grid with Browser Homepage Mockups */}
       <motion.div layout className="grid md:grid-cols-3 gap-8">
         <AnimatePresence>
           {filteredProjects.map((item) => (
             <motion.div
               layout
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.4 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.3 }}
               key={item.id}
-              className="bg-white border border-slate-200 rounded-3xl overflow-hidden group hover:border-champagne/60 hover:shadow-cardHover transition-all duration-500 flex flex-col justify-between"
+              className={`bg-gradient-to-br ${item.bgGradient} ${item.borderColor} rounded-[2.5rem] border shadow-bento hover:shadow-bentoHover transition-all duration-300 flex flex-col justify-between overflow-hidden group`}
             >
               <div>
-                <div className="h-64 relative overflow-hidden bg-slate-100">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-obsidian/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
-                    <button
-                      onClick={() => setActiveModal(item)}
-                      className="p-3 bg-white text-obsidian rounded-full shadow-lg hover:scale-110 transition-transform"
-                      aria-label="Quick View"
-                    >
-                      <Eye className="w-4 h-4" />
-                    </button>
-                  </div>
-                  <div className="absolute top-4 left-4 z-10">
-                    <span className="bg-white/95 backdrop-blur-md text-champagne-dark text-[11px] px-3 py-1 rounded-full font-bold border border-slate-200 shadow-sm">
-                      {item.category}
-                    </span>
+                {/* Custom Web Browser Mockup Box */}
+                <div className="p-4 pb-0">
+                  <div className="bg-white rounded-2xl border border-slate-200/80 shadow-md overflow-hidden relative">
+                    
+                    {/* Browser Address Header */}
+                    <div className="bg-slate-100 border-b border-slate-200 px-3 py-2 flex items-center justify-between">
+                      <div className="flex items-center gap-1.5">
+                        <div className="w-2.5 h-2.5 rounded-full bg-red-400" />
+                        <div className="w-2.5 h-2.5 rounded-full bg-amber-400" />
+                        <div className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
+                      </div>
+                      <div className="bg-white border border-slate-200/80 text-[10px] text-slate-500 font-mono px-3 py-0.5 rounded-full">
+                        {item.title.toLowerCase().replace(/[^a-z0-9]/g, "")}.com
+                      </div>
+                      <div className="w-3" />
+                    </div>
+
+                    {/* Simulated Homepage UI Canvas */}
+                    <div className="p-5 min-h-[190px] flex flex-col justify-between text-left relative bg-white">
+                      
+                      {/* Mini Web Navbar */}
+                      <div className="flex items-center justify-between border-b border-slate-100 pb-2">
+                        <span className="text-[11px] font-bold font-serif text-slate-900">{item.title}</span>
+                        <div className="flex gap-2 text-[8px] font-semibold text-slate-400">
+                          <span>Home</span>
+                          <span>About</span>
+                          <span>Contact</span>
+                        </div>
+                      </div>
+
+                      {/* Mini Homepage Hero Text & CTA */}
+                      <div className="my-3">
+                        <span className="text-[9px] font-extrabold uppercase tracking-wider text-emerald-accent block mb-0.5">
+                          Official Homepage
+                        </span>
+                        <h5 className="text-base font-bold font-serif text-slate-900 leading-tight">
+                          {item.heroHeadline}
+                        </h5>
+                        <p className="text-[10px] text-slate-500 mt-1 leading-snug">
+                          {item.heroSub}
+                        </p>
+                      </div>
+
+                      {/* Mini Hero Button */}
+                      <div className="pt-2">
+                        <span className={`text-[9px] font-extrabold px-3 py-1 rounded-md shadow-sm inline-block ${item.btnBg}`}>
+                          {item.btnText}
+                        </span>
+                      </div>
+
+                    </div>
                   </div>
                 </div>
 
+                {/* Card Text Information */}
                 <div className="p-6">
-                  <h4 className="text-xl font-bold font-serif text-obsidian mb-2">{item.title}</h4>
-                  <p className="text-xs text-slate-500 leading-relaxed line-clamp-2 mb-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <h4 className="text-xl font-serif font-bold text-slate-900">{item.title}</h4>
+                  </div>
+                  <p className="text-slate-600 text-xs leading-relaxed mb-4">
                     {item.description}
                   </p>
-                  <div className="flex items-center gap-3 text-xs mb-6">
-                    <span className="font-bold text-emerald-accent">{item.metric}</span>
+                  <div className="flex items-center gap-2.5 text-xs font-bold">
+                    <span className="text-emerald-accent">{item.metric}</span>
                     <span className="text-slate-300">•</span>
-                    <span className="text-slate-500 font-medium">{item.loadTime}</span>
+                    <span className="text-slate-500">{item.loadTime}</span>
                   </div>
                 </div>
               </div>
 
+              {/* Action Button */}
               <div className="p-6 pt-0">
                 <button
                   onClick={() => setActiveModal(item)}
-                  className="w-full py-3 px-4 rounded-xl border border-slate-200 hover:border-obsidian bg-ivory hover:bg-obsidian hover:text-white text-obsidian text-xs font-bold flex items-center justify-center gap-2 transition-all duration-300"
+                  className="w-full py-2.5 px-4 rounded-xl border border-slate-300/80 bg-white/90 hover:bg-obsidian hover:text-white text-slate-900 text-xs font-bold flex items-center justify-center gap-2 shadow-sm transition-all duration-300"
                 >
                   <span>Explore Live Architecture</span>
                   <ExternalLink className="w-3.5 h-3.5 text-champagne" />
@@ -147,7 +201,7 @@ export default function PortfolioSection() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="bg-white border border-slate-200 rounded-3xl p-6 md:p-8 max-w-2xl w-full relative shadow-2xl overflow-hidden"
+              className="bg-white border border-slate-200 rounded-[2.5rem] p-6 md:p-8 max-w-xl w-full relative shadow-2xl overflow-hidden"
             >
               <button
                 onClick={() => setActiveModal(null)}
@@ -156,17 +210,23 @@ export default function PortfolioSection() {
                 <X className="w-5 h-5" />
               </button>
 
-              <div className="h-64 rounded-2xl overflow-hidden mb-6 relative">
-                <img src={activeModal.image} alt={activeModal.title} className="w-full h-full object-cover" />
-              </div>
-
-              <span className="text-xs font-bold uppercase tracking-wider text-champagne-dark">
+              <span className="text-xs font-extrabold uppercase tracking-widest text-emerald-accent bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100 inline-block mb-3">
                 {activeModal.category}
               </span>
-              <h3 className="text-2xl font-bold font-serif text-obsidian mt-1 mb-3">{activeModal.title}</h3>
+              <h3 className="text-2xl font-serif font-bold text-slate-900 mb-2">{activeModal.title}</h3>
               <p className="text-xs text-slate-600 leading-relaxed mb-6">{activeModal.description}</p>
 
-              <div className="flex items-center justify-between pt-4 border-t border-slate-100">
+              <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5 mb-6 text-left space-y-2">
+                <p className="text-xs font-bold text-slate-800">Production Specifications:</p>
+                <ul className="text-xs text-slate-600 space-y-1">
+                  <li>• Built on Next.js 14 App Router & React 18</li>
+                  <li>• Custom Figma UI/UX Design Token System</li>
+                  <li>• Sub-0.4s Rendering Speed Guarantee</li>
+                  <li>• 100/100 Core Web Vitals & JSON-LD Technical SEO</li>
+                </ul>
+              </div>
+
+              <div className="flex items-center justify-between pt-2">
                 <div className="flex items-center gap-2 text-xs font-bold text-emerald-accent">
                   <CheckCircle2 className="w-4 h-4" />
                   <span>{activeModal.metric}</span>
