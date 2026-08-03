@@ -79,7 +79,7 @@ export default function ContactModal({
                   Start a Project
                 </h3>
                 <p className="text-xs text-slate-500 mt-1">
-                  Step {step} of 2 - Let's build your custom web architecture.
+                  Step {step} of 2 &mdash; Let&apos;s build your custom web architecture.
                 </p>
               </div>
 
@@ -111,7 +111,7 @@ export default function ContactModal({
                       onChange={(e) =>
                         setFormData({ ...formData, businessName: e.target.value })
                       }
-                      className="w-full bg-ivory border border-slate-200 rounded-xl px-4 py-2.5 text-sm text-slate-100 text-obsidian focus:outline-none focus:border-champagne"
+                      className="w-full bg-ivory border border-slate-200 rounded-xl px-4 py-2.5 text-sm text-obsidian focus:outline-none focus:border-champagne"
                       placeholder="e.g. Sharma Capital"
                     />
                   </div>

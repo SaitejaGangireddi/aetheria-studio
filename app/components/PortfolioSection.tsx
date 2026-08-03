@@ -2,13 +2,30 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, CheckCircle2, Sparkles, Eye, X } from "lucide-react";
+import { ExternalLink, CheckCircle2, Sparkles, X } from "lucide-react";
+
+interface ProjectItem {
+  id: string;
+  title: string;
+  category: string;
+  filter: string;
+  metric: string;
+  loadTime: string;
+  bgGradient: string;
+  borderColor: string;
+  previewHeaderBg: string;
+  heroHeadline: string;
+  heroSub: string;
+  btnText: string;
+  btnBg: string;
+  description: string;
+}
 
 export default function PortfolioSection() {
   const [activeFilter, setActiveFilter] = useState("all");
-  const [activeModal, setActiveModal] = useState<any>(null);
+  const [activeModal, setActiveModal] = useState<ProjectItem | null>(null);
 
-  const projects = [
+  const projects: ProjectItem[] = [
     {
       id: "katha",
       title: "Katha Studios",
@@ -73,7 +90,6 @@ export default function PortfolioSection() {
         </h3>
       </div>
 
-      {/* Interactive Bento Filter Buttons */}
       <div className="flex justify-center gap-3 mb-10 flex-wrap">
         {[
           { id: "all", label: "All Production Deploys" },
@@ -94,7 +110,6 @@ export default function PortfolioSection() {
         ))}
       </div>
 
-      {/* Bento Portfolio Grid with Browser Homepage Mockups */}
       <motion.div layout className="grid md:grid-cols-3 gap-8">
         <AnimatePresence>
           {filteredProjects.map((item) => (
@@ -108,11 +123,8 @@ export default function PortfolioSection() {
               className={`bg-gradient-to-br ${item.bgGradient} ${item.borderColor} rounded-[2.5rem] border shadow-bento hover:shadow-bentoHover transition-all duration-300 flex flex-col justify-between overflow-hidden group`}
             >
               <div>
-                {/* Custom Web Browser Mockup Box */}
                 <div className="p-4 pb-0">
                   <div className="bg-white rounded-2xl border border-slate-200/80 shadow-md overflow-hidden relative">
-                    
-                    {/* Browser Address Header */}
                     <div className="bg-slate-100 border-b border-slate-200 px-3 py-2 flex items-center justify-between">
                       <div className="flex items-center gap-1.5">
                         <div className="w-2.5 h-2.5 rounded-full bg-red-400" />
@@ -125,10 +137,7 @@ export default function PortfolioSection() {
                       <div className="w-3" />
                     </div>
 
-                    {/* Simulated Homepage UI Canvas */}
                     <div className="p-5 min-h-[190px] flex flex-col justify-between text-left relative bg-white">
-                      
-                      {/* Mini Web Navbar */}
                       <div className="flex items-center justify-between border-b border-slate-100 pb-2">
                         <span className="text-[11px] font-bold font-serif text-slate-900">{item.title}</span>
                         <div className="flex gap-2 text-[8px] font-semibold text-slate-400">
@@ -138,7 +147,6 @@ export default function PortfolioSection() {
                         </div>
                       </div>
 
-                      {/* Mini Homepage Hero Text & CTA */}
                       <div className="my-3">
                         <span className="text-[9px] font-extrabold uppercase tracking-wider text-emerald-accent block mb-0.5">
                           Official Homepage
@@ -151,18 +159,15 @@ export default function PortfolioSection() {
                         </p>
                       </div>
 
-                      {/* Mini Hero Button */}
                       <div className="pt-2">
                         <span className={`text-[9px] font-extrabold px-3 py-1 rounded-md shadow-sm inline-block ${item.btnBg}`}>
                           {item.btnText}
                         </span>
                       </div>
-
                     </div>
                   </div>
                 </div>
 
-                {/* Card Text Information */}
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-2">
                     <h4 className="text-xl font-serif font-bold text-slate-900">{item.title}</h4>
@@ -178,7 +183,6 @@ export default function PortfolioSection() {
                 </div>
               </div>
 
-              {/* Action Button */}
               <div className="p-6 pt-0">
                 <button
                   onClick={() => setActiveModal(item)}
@@ -193,7 +197,6 @@ export default function PortfolioSection() {
         </AnimatePresence>
       </motion.div>
 
-      {/* Lightbox Quick View Modal */}
       <AnimatePresence>
         {activeModal && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-obsidian/60 backdrop-blur-md">
@@ -219,10 +222,10 @@ export default function PortfolioSection() {
               <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5 mb-6 text-left space-y-2">
                 <p className="text-xs font-bold text-slate-800">Production Specifications:</p>
                 <ul className="text-xs text-slate-600 space-y-1">
-                  <li>• Built on Next.js 14 App Router & React 18</li>
-                  <li>• Custom Figma UI/UX Design Token System</li>
-                  <li>• Sub-0.4s Rendering Speed Guarantee</li>
-                  <li>• 100/100 Core Web Vitals & JSON-LD Technical SEO</li>
+                  <li>&bull; Built on Next.js 14 App Router &amp; React 18</li>
+                  <li>&bull; Custom Figma UI/UX Design Token System</li>
+                  <li>&bull; Sub-0.4s Rendering Speed Guarantee</li>
+                  <li>&bull; 100/100 Core Web Vitals &amp; JSON-LD Technical SEO</li>
                 </ul>
               </div>
 

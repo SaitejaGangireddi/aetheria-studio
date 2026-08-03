@@ -4,38 +4,17 @@ import React, { useState, useEffect } from "react";
 import Lenis from "lenis";
 import { Sparkles } from "lucide-react";
 
-import TopHeader from "./components/TopHeader";
 import Navbar from "./components/Navbar";
+import FloatingSocialDock from "./components/FloatingSocialDock";
 import HeroSection from "./components/HeroSection";
-import InteractionsSection from "./components/InteractionsSection";
-import TemplateGallerySection from "./components/TemplateGallerySection";
-import DesignSystemSection from "./components/DesignSystemSection";
+import SpeedAuditSection from "./components/SpeedAuditSection";
+import DesignConfiguratorSection from "./components/DesignConfiguratorSection";
 import ComparisonSection from "./components/ComparisonSection";
 import ServicesSection from "./components/ServicesSection";
 import PortfolioSection from "./components/PortfolioSection";
-import PricingSection from "./components/PricingSection";
 import ProcessSection from "./components/ProcessSection";
-import SupportSection from "./components/SupportSection";
-import InsightsSection from "./components/InsightsSection";
 import ContactModal from "./components/ContactModal";
 import Footer from "./components/Footer";
-
-const schemaData = {
-  "@context": "https://schema.org",
-  "@type": "WebDesignAgency",
-  name: "Aetheria Digital Studio",
-  url: "https://aetheriadigital.com",
-  logo: "https://aetheriadigital.com/logo.png",
-  description:
-    "Ultra-luxury web design, custom Next.js engineering, and white-glove managed hosting for high-ticket brands.",
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Hyderabad",
-    addressRegion: "TS",
-    addressCountry: "IN",
-  },
-  priceRange: "₹₹₹₹",
-};
 
 export default function Page() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -58,26 +37,17 @@ export default function Page() {
 
   return (
     <div className="bg-ivory text-obsidian min-h-screen selection:bg-champagne/20 font-sans antialiased overflow-x-hidden">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
-      />
-
-      <TopHeader />
       <Navbar onOpenModal={() => setIsModalOpen(true)} />
+      <FloatingSocialDock />
 
       <main id="main-content">
         <HeroSection onOpenModal={() => setIsModalOpen(true)} />
-        <InteractionsSection />
-        <TemplateGallerySection />
-        <DesignSystemSection />
+        <SpeedAuditSection />
+        <DesignConfiguratorSection />
         <ComparisonSection />
         <ServicesSection />
         <PortfolioSection />
-        <PricingSection onOpenModal={() => setIsModalOpen(true)} />
         <ProcessSection />
-        <SupportSection onOpenModal={() => setIsModalOpen(true)} />
-        <InsightsSection />
       </main>
 
       <Footer />

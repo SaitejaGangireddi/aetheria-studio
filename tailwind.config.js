@@ -8,6 +8,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["var(--font-jakarta)", "sans-serif"],
+        serif: ["var(--font-jakarta)", "sans-serif"], // Overrides serif to enforce a single global font
+      },
       colors: {
         ivory: "#FAFAFC",
         obsidian: "#0F172A",
