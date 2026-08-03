@@ -7,13 +7,16 @@ import { Sparkles } from "lucide-react";
 import TopHeader from "./components/TopHeader";
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
+import InteractionsSection from "./components/InteractionsSection";
+import TemplateGallerySection from "./components/TemplateGallerySection";
 import DesignSystemSection from "./components/DesignSystemSection";
 import ComparisonSection from "./components/ComparisonSection";
 import ServicesSection from "./components/ServicesSection";
 import PortfolioSection from "./components/PortfolioSection";
-import InteractionsSection from "./components/InteractionsSection";
 import PricingSection from "./components/PricingSection";
 import ProcessSection from "./components/ProcessSection";
+import SupportSection from "./components/SupportSection";
+import InsightsSection from "./components/InsightsSection";
 import ContactModal from "./components/ContactModal";
 import Footer from "./components/Footer";
 
@@ -65,13 +68,16 @@ export default function Page() {
 
       <main id="main-content">
         <HeroSection onOpenModal={() => setIsModalOpen(true)} />
+        <InteractionsSection />
+        <TemplateGallerySection />
         <DesignSystemSection />
         <ComparisonSection />
         <ServicesSection />
         <PortfolioSection />
-        <InteractionsSection />
         <PricingSection onOpenModal={() => setIsModalOpen(true)} />
         <ProcessSection />
+        <SupportSection onOpenModal={() => setIsModalOpen(true)} />
+        <InsightsSection />
       </main>
 
       <Footer />
