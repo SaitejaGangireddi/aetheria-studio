@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import FloatingActions from "@/app/components/FloatingActions";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -13,38 +14,9 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "DesignerPal | High-Converting Web Engineering Studio in Hyderabad",
+  title: "DesignerPal Studio | High-Performance Digital Engineering",
   description:
-    "DesignerPal engineers high-performing web platforms, custom Next.js applications, sub-second edge builds, and bespoke digital experiences in Hyderabad, India.",
-  keywords: [
-    "DesignerPal",
-    "designerpal.in",
-    "website designer hyderabad",
-    "web development studio hyderabad",
-    "next.js app router developer",
-    "custom web application development",
-    "high speed web platforms",
-  ],
-  authors: [{ name: "DesignerPal Studio" }],
-  creator: "DesignerPal",
-  publisher: "DesignerPal",
-  metadataBase: new URL("https://designerpal.in"),
-  alternates: {
-    canonical: "https://designerpal.in",
-  },
-  openGraph: {
-    title: "DesignerPal | High-Converting Web Engineering Studio",
-    description:
-      "Bespoke web platforms, zero-plugin Next.js architecture, and sub-second edge performance by DesignerPal.",
-    url: "https://designerpal.in",
-    siteName: "DesignerPal",
-    locale: "en_IN",
-    type: "website",
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
+    "Custom Next.js platforms, zero-plugin web architecture, and sub-second edge experiences engineered locally in Hyderabad for global scale.",
 };
 
 export default function RootLayout({
@@ -54,33 +26,29 @@ export default function RootLayout({
 }>) {
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "DesignerPal",
-    "url": "https://designerpal.in",
-    "address": {
+    "@type": "Organization",
+    name: "DesignerPal Studio",
+    url: "https://www.designerpal.in",
+    logo: "https://res.cloudinary.com/dmkjnuolr/image/upload/v1785855698/ChatGPT_Image_Aug_4_2026_08_30_13_PM_obda5y.png",
+    description:
+      "High-Performance Web Applications & Custom Digital Engineering Studio.",
+    address: {
       "@type": "PostalAddress",
-      "addressLocality": "Hyderabad",
-      "addressRegion": "Telangana",
-      "addressCountry": "IN"
+      addressLocality: "Hyderabad",
+      addressRegion: "Telangana",
+      addressCountry: "IN",
     },
-    "knowsAbout": [
-      "Website Design",
-      "Next.js App Development",
-      "Core Web Vitals",
-      "Web Applications"
-    ]
   };
 
   return (
-    <html lang="en" className="scroll-smooth">
-      <head>
+    <html lang="en" className={`scroll-smooth ${inter.variable} ${playfair.variable}`}>
+      <body className="bg-slate-950 text-slate-100 antialiased selection:bg-purple-500 selection:text-white">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-      </head>
-      <body className={`${inter.variable} ${playfair.variable} font-sans antialiased bg-slate-950 text-slate-100`}>
         {children}
+        <FloatingActions />
       </body>
     </html>
   );

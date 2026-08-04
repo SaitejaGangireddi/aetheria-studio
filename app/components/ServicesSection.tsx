@@ -1,81 +1,60 @@
 "use client";
 
 import React from "react";
-import { Layout, Code, Server, Search, CheckCircle2 } from "lucide-react";
+import { Sparkles, Code2, Layout, Zap, ShieldCheck, Cpu, ArrowUpRight } from "lucide-react";
 
 export default function ServicesSection() {
   const services = [
     {
-      icon: Layout,
-      title: "Bespoke Web Design & Architecture",
-      desc: "Custom design systems tailored in Figma. Distinct visual identities built to establish trust.",
-      badge: "UI/UX Systems",
-      color: "text-purple-400",
+      icon: <Code2 className="w-6 h-6 text-purple-400" />,
+      title: "Custom Next.js Engineering",
+      description: "Full-stack web application development built with Next.js App Router, React Server Components, and zero-shift layouts.",
     },
     {
-      icon: Code,
-      title: "Next.js & React Custom Engineering",
-      desc: "Sub-second page speeds engineered with Next.js App Router & React. Clean code without slow plugins.",
-      badge: "Pure Code",
-      color: "text-emerald-400",
+      icon: <Layout className="w-6 h-6 text-pink-400" />,
+      title: "UI/UX & Spatial Curation",
+      description: "Bespoke design systems and high-converting user flows designed tailored to showcase your portfolio or luxury products.",
     },
     {
-      icon: Server,
-      title: "White-Glove Managed Hosting",
-      desc: "Hands-free production hosting backed by 99.99% SLA uptime, automated global CDN routing, and daily backups.",
-      badge: "99.99% SLA",
-      color: "text-amber-400",
+      icon: <Zap className="w-6 h-6 text-amber-400" />,
+      title: "Sub-Second LCP Speed SLAs",
+      description: "Extreme performance optimization ensuring sub-second response times, 100/100 Core Web Vitals, and instant global CDN delivery.",
     },
     {
-      icon: Search,
-      title: "Technical SEO & Schema Optimization",
-      desc: "Maximized Core Web Vitals ratings, structured JSON-LD schema markup, and metadata architecture.",
-      badge: "Search Dominance",
-      color: "text-pink-400",
+      icon: <ShieldCheck className="w-6 h-6 text-emerald-400" />,
+      title: "Zero-Plugin Web Security",
+      description: "Clean, robust codebases free of bloated WordPress/third-party plugins, giving your brand maximum uptime and security.",
     },
   ];
 
   return (
-    <section id="services" className="py-20 px-6 md:px-12 max-w-5xl mx-auto">
-      <div className="text-center max-w-2xl mx-auto mb-12">
-        <h3 className="text-3xl md:text-5xl font-serif font-bold text-white tracking-tight">
-          End-to-End Digital Engineering Services
-        </h3>
-        <p className="text-xs md:text-sm text-slate-400 mt-2">
-          Streamlined architecture solutions engineered for speed, authority, and scale.
+    <section id="services" className="py-20 px-6 md:px-12 max-w-7xl mx-auto relative z-10 space-y-12">
+      <div className="text-center max-w-3xl mx-auto space-y-4">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-950/80 border border-purple-800 text-purple-300 text-xs font-bold uppercase tracking-wider">
+          <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+          <span>Core Capabilities</span>
+        </div>
+        <h2 className="text-3xl sm:text-5xl font-serif font-bold text-white tracking-tight">
+          Services We Provide
+        </h2>
+        <p className="text-slate-400 text-sm">
+          Everything you need to turn initial design concepts into live production edge applications.
         </p>
       </div>
 
-      <div className="space-y-4">
-        {services.map((s, idx) => {
-          const Icon = s.icon;
-          return (
-            <div
-              key={idx}
-              className="bg-slate-900/60 border border-slate-800 hover:border-purple-500/40 rounded-2xl p-5 shadow-xl transition-all duration-300 hover:translate-x-1 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 backdrop-blur-md"
-            >
-              <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-center shrink-0">
-                  <Icon className={`w-5 h-5 ${s.color}`} />
-                </div>
-                <div>
-                  <div className="flex items-center gap-2">
-                    <h4 className="text-sm font-serif font-bold text-white">{s.title}</h4>
-                    <span className="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded bg-slate-950 text-slate-300 border border-slate-800">
-                      {s.badge}
-                    </span>
-                  </div>
-                  <p className="text-xs text-slate-400 mt-0.5">{s.desc}</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-1.5 text-xs text-emerald-400 font-bold shrink-0 self-end sm:self-center">
-                <CheckCircle2 className="w-4 h-4" />
-                <span>Included</span>
-              </div>
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {services.map((service, idx) => (
+          <div
+            key={idx}
+            className="p-6 rounded-3xl bg-slate-900/60 border border-slate-800/80 hover:border-purple-500/50 backdrop-blur-xl transition-all duration-300 space-y-4 hover:-translate-y-1 shadow-[0_10px_30px_rgba(0,0,0,0.3)]"
+          >
+            <div className="w-12 h-12 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-center">
+              {service.icon}
             </div>
-          );
-        })}
+            <h3 className="text-lg font-bold text-white">{service.title}</h3>
+            <p className="text-xs text-slate-400 leading-relaxed">{service.description}</p>
+          </div>
+        ))}
       </div>
     </section>
   );
