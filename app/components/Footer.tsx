@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import { LOGO_URL } from "../constants/brand";
 
 export default function Footer() {
   return (
@@ -9,13 +10,13 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         {/* Custom Brand Logo */}
         <div className="flex items-center gap-2.5">
-          <div className="relative w-7 h-7 overflow-hidden flex items-center justify-center">
+          <div className="relative w-7 h-7 flex items-center justify-center">
             <Image
-              src="https://res.cloudinary.com/dmkjnuolr/image/upload/v1785855698/ChatGPT_Image_Aug_4_2026_08_30_13_PM_obda5y.png"
+              src={LOGO_URL} 
               alt="DesignerPal Logo"
               width={28}
               height={28}
-              className="object-contain"
+              className="object-contain w-auto h-auto max-h-7"
             />
           </div>
           <span className="font-serif font-bold text-base text-white">
@@ -25,21 +26,14 @@ export default function Footer() {
 
         {/* Copyright */}
         <p className="text-slate-500">
-          © {new Date().getFullYear()} DesignerPal Studio. All rights reserved.
-          High-Performance Digital Engineering.
+          © {new Date().getFullYear()} DesignerPal Studio. All rights reserved. High-Performance Digital Engineering.
         </p>
 
         {/* Footer Links */}
         <div className="flex gap-6 font-medium text-slate-400">
-          <a href="#why-us" className="hover:text-white transition-colors">
-            Why Us
-          </a>
-          <a href="#work" className="hover:text-white transition-colors">
-            Work
-          </a>
-          <a href="#services" className="hover:text-white transition-colors">
-            Services
-          </a>
+          <a href="#why-us" className="hover:text-white transition-colors">Why Us</a>
+          <a href="#work" className="hover:text-white transition-colors">Work</a>
+          <a href="#services" className="hover:text-white transition-colors">Services</a>
         </div>
       </div>
     </footer>

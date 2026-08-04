@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { Sparkles, ArrowRight, Menu, X } from "lucide-react";
+import { LOGO_URL } from "../constants/brand";
 
 export default function Navbar({ onOpenModal }: { onOpenModal: () => void }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -12,13 +13,13 @@ export default function Navbar({ onOpenModal }: { onOpenModal: () => void }) {
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Custom Brand Logo */}
         <a href="#" className="flex items-center gap-3 group">
-          <div className="relative w-10 h-10 rounded-xl overflow-hidden flex items-center justify-center">
+          <div className="relative w-9 h-9 flex items-center justify-center">
             <Image
-              src="https://res.cloudinary.com/dmkjnuolr/image/upload/v1785855698/ChatGPT_Image_Aug_4_2026_08_30_13_PM_obda5y.png"
+              src={LOGO_URL} 
               alt="DesignerPal Logo"
-              width={40}
-              height={40}
-              className="object-contain transition-transform group-hover:scale-105"
+              width={36}
+              height={36}
+              className="object-contain w-auto h-auto max-h-9 transition-transform group-hover:scale-105"
               priority
             />
           </div>
@@ -29,18 +30,10 @@ export default function Navbar({ onOpenModal }: { onOpenModal: () => void }) {
 
         {/* Desktop Nav Links */}
         <nav className="hidden md:flex items-center gap-8 text-xs font-semibold text-slate-300">
-          <a href="#why-us" className="hover:text-white transition-colors">
-            Why Us
-          </a>
-          <a href="#work" className="hover:text-white transition-colors">
-            Work
-          </a>
-          <a href="#services" className="hover:text-white transition-colors">
-            Services
-          </a>
-          <a href="#process" className="hover:text-white transition-colors">
-            Process
-          </a>
+          <a href="#why-us" className="hover:text-white transition-colors">Why Us</a>
+          <a href="#work" className="hover:text-white transition-colors">Work</a>
+          <a href="#services" className="hover:text-white transition-colors">Services</a>
+          <a href="#process" className="hover:text-white transition-colors">Process</a>
         </nav>
 
         {/* CTA Button */}
@@ -60,29 +53,17 @@ export default function Navbar({ onOpenModal }: { onOpenModal: () => void }) {
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           className="md:hidden text-slate-300 hover:text-white p-2"
         >
-          {mobileMenuOpen ? (
-            <X className="w-6 h-6" />
-          ) : (
-            <Menu className="w-6 h-6" />
-          )}
+          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
         <div className="md:hidden pt-4 pb-6 border-t border-slate-800/80 mt-4 flex flex-col gap-4 text-sm font-semibold text-slate-200">
-          <a href="#why-us" onClick={() => setMobileMenuOpen(false)}>
-            Why Us
-          </a>
-          <a href="#work" onClick={() => setMobileMenuOpen(false)}>
-            Work
-          </a>
-          <a href="#services" onClick={() => setMobileMenuOpen(false)}>
-            Services
-          </a>
-          <a href="#process" onClick={() => setMobileMenuOpen(false)}>
-            Process
-          </a>
+          <a href="#why-us" onClick={() => setMobileMenuOpen(false)}>Why Us</a>
+          <a href="#work" onClick={() => setMobileMenuOpen(false)}>Work</a>
+          <a href="#services" onClick={() => setMobileMenuOpen(false)}>Services</a>
+          <a href="#process" onClick={() => setMobileMenuOpen(false)}>Process</a>
           <button
             onClick={() => {
               setMobileMenuOpen(false);
