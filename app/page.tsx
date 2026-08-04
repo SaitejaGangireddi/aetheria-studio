@@ -39,12 +39,17 @@ export default function Page() {
   }, []);
 
   return (
-    <div className="bg-ivory text-obsidian min-h-screen selection:bg-champagne/20 font-sans antialiased overflow-x-hidden">
+    <div className="bg-slate-950 text-slate-100 min-h-screen selection:bg-purple-500/30 font-sans antialiased overflow-x-hidden relative">
+      {/* Background Ambient Mesh Gradients */}
+      <div className="fixed top-0 left-1/4 w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[140px] pointer-events-none -z-10 animate-pulse" />
+      <div className="fixed top-1/3 right-10 w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[140px] pointer-events-none -z-10" />
+      <div className="fixed bottom-10 left-10 w-[550px] h-[550px] bg-emerald-500/10 rounded-full blur-[140px] pointer-events-none -z-10" />
+
       <Toaster position="bottom-left" theme="dark" />
       <Navbar onOpenModal={() => setIsModalOpen(true)} />
       <FloatingSocialDock />
 
-      <main id="main-content">
+      <main id="main-content" className="space-y-6">
         <HeroSection onOpenModal={() => setIsModalOpen(true)} />
         <PerformanceGaugesSection />
         <WhyChooseUsSection onOpenModal={() => setIsModalOpen(true)} />
@@ -65,10 +70,10 @@ export default function Page() {
 
       <button
         onClick={() => setIsModalOpen(true)}
-        className="fixed bottom-6 right-6 z-40 bg-obsidian hover:bg-slate-800 text-white font-semibold px-6 py-3.5 rounded-full shadow-2xl flex items-center gap-2.5 border border-champagne/40 transition-all hover:scale-105"
+        className="fixed bottom-6 right-6 z-40 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold px-6 py-3.5 rounded-full shadow-2xl flex items-center gap-2.5 border border-purple-400/30 transition-all hover:scale-105"
         aria-label="Get Instant Quote"
       >
-        <Sparkles className="w-4 h-4 text-champagne" />
+        <Sparkles className="w-4 h-4 text-amber-300" />
         <span>Get Instant Quote</span>
       </button>
     </div>
