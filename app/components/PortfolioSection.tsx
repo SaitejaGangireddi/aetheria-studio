@@ -1,105 +1,119 @@
 "use client";
 
-import React, { useState } from "react";
-import { ExternalLink } from "lucide-react";
+import React from "react";
+import SpotlightCard from "./SpotlightCard";
+import { ExternalLink, Sparkles, CheckCircle2, ArrowUpRight } from "lucide-react";
 
 export default function PortfolioSection() {
-  const [filter, setFilter] = useState<"all" | "interior" | "agritech">("all");
-
   const projects = [
     {
-      id: "katha",
-      category: "interior",
-      client: "Katha Studios",
-      title: "Elegance Redefined.",
-      subtitle: "Luxury Interior Architecture & Spatial Curation",
+      title: "Katha Studios",
+      category: "Luxury Architecture & Spatial Curation",
+      description:
+        "100% custom Next.js showcase platform engineered with zero-shift floorplan lightboxes, sub-second response times, and high-converting brief request funnels.",
       url: "https://katha-studios.vercel.app",
-      desc: "Bespoke interior design and architectural showcase platform built with Next.js App Router.",
-      border: "hover:border-purple-500/50",
+      vitals: "0.29s LCP",
+      tags: ["Next.js App Router", "Tailwind CSS", "Framer Motion", "Vercel Edge"],
+      gradient: "from-purple-500/20 via-pink-500/10 to-transparent",
+      accentBorder: "hover:border-purple-500/50",
+      badgeColor: "bg-purple-950/80 text-purple-300 border-purple-800",
     },
     {
-      id: "annapurna",
-      category: "agritech",
-      client: "Annapurna Farms & Seeds",
-      title: "Nurturing Growth.",
-      subtitle: "High-Yield Hybrid Seeds & Sustainable AgriTech",
+      title: "Annapurna Farms & Seeds",
+      category: "Enterprise AgriTech & Hybrid Catalog Portal",
+      description:
+        "Multi-region hybrid seed ordering platform built for high-concurrency inventory searches, real-time telemetry, and instant regional catalog filters.",
       url: "https://annapurna-farms.vercel.app",
-      desc: "Enterprise AgriTech portal engineered for wholesale hybrid seed distribution with sub-second rendering.",
-      border: "hover:border-emerald-500/50",
+      vitals: "0.31s LCP",
+      tags: ["React 19", "TypeScript", "Prisma Database", "Tailwind CSS"],
+      gradient: "from-emerald-500/20 via-teal-500/10 to-transparent",
+      accentBorder: "hover:border-emerald-500/50",
+      badgeColor: "bg-emerald-950/80 text-emerald-300 border-emerald-800",
     },
     {
-      id: "aveorahs",
-      category: "interior",
-      client: "Aveorahs Interior Studios",
-      title: "Bespoke Spaces.",
-      subtitle: "Commercial & Private Estate Architecture",
+      title: "Aveorahs Interior Studios",
+      category: "Commercial Architecture & Estate Portfolio",
+      description:
+        "Ultra-high resolution portfolio platform optimized for zero layout shifts, smooth ambient dark mode transitions, and direct client consultation scheduling.",
       url: "https://aveorahs-interiors.vercel.app",
-      desc: "High-end interior architecture site built for luxury commercial projects, optimized for 100/100 Core Web Vitals.",
-      border: "hover:border-amber-500/50",
+      vitals: "0.34s LCP",
+      tags: ["Next.js", "Server Components", "Lucide Icons", "Zero-Plugin Security"],
+      gradient: "from-amber-500/20 via-orange-500/10 to-transparent",
+      accentBorder: "hover:border-amber-500/50",
+      badgeColor: "bg-amber-950/80 text-amber-300 border-amber-800",
     },
   ];
 
-  const filtered = filter === "all" ? projects : projects.filter((p) => p.category === filter);
-
   return (
-    <section id="portfolio" className="py-20 px-6 md:px-12 max-w-6xl mx-auto">
-      <div className="text-center max-w-2xl mx-auto mb-10">
-        <span className="text-[10px] font-extrabold uppercase tracking-widest text-purple-400 bg-purple-950/80 px-3.5 py-1.5 rounded-full border border-purple-800/80 inline-block mb-2">
-          Client Work
-        </span>
-        <h3 className="text-3xl md:text-5xl font-serif font-bold text-white tracking-tight">
-          Client Showcase & Deployments
-        </h3>
+    <section id="work" className="py-24 px-6 md:px-12 max-w-7xl mx-auto relative z-10">
+      {/* Section Header */}
+      <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-xs font-bold text-purple-400">
+          <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+          <span>PROVEN DIGITAL PLATFORMS</span>
+        </div>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-white tracking-tight">
+          Featured Web Engineering Work
+        </h2>
+        <p className="text-slate-400 text-sm md:text-base leading-relaxed">
+          Custom digital platforms and enterprise applications engineered for market leaders. Every build guarantees 100/100 Core Web Vitals and zero security debt.
+        </p>
       </div>
 
-      {/* Filter Pills */}
-      <div className="flex justify-center gap-2 mb-10">
-        <button
-          onClick={() => setFilter("all")}
-          className={`px-4 py-2 rounded-full text-xs font-bold transition-all ${filter === "all" ? "bg-purple-600 text-white shadow-lg shadow-purple-600/30" : "bg-slate-900 text-slate-400 border border-slate-800 hover:text-white"}`}
-        >
-          All Production Deploys
-        </button>
-        <button
-          onClick={() => setFilter("interior")}
-          className={`px-4 py-2 rounded-full text-xs font-bold transition-all ${filter === "interior" ? "bg-purple-600 text-white shadow-lg shadow-purple-600/30" : "bg-slate-900 text-slate-400 border border-slate-800 hover:text-white"}`}
-        >
-          Interior & Architecture
-        </button>
-        <button
-          onClick={() => setFilter("agritech")}
-          className={`px-4 py-2 rounded-full text-xs font-bold transition-all ${filter === "agritech" ? "bg-purple-600 text-white shadow-lg shadow-purple-600/30" : "bg-slate-900 text-slate-400 border border-slate-800 hover:text-white"}`}
-        >
-          AgriTech & Agriculture
-        </button>
-      </div>
-
-      {/* Grid */}
-      <div className="grid md:grid-cols-3 gap-6">
-        {filtered.map((p) => (
-          <div
-            key={p.id}
-            className={`bg-slate-900/60 border border-slate-800 ${p.border} rounded-3xl p-6 shadow-xl backdrop-blur-xl flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 group`}
-          >
+      {/* Grid of Projects with Spotlight Effects */}
+      <div className="grid md:grid-cols-3 gap-8">
+        {projects.map((project, idx) => (
+          <SpotlightCard key={idx} className={`flex flex-col justify-between ${project.accentBorder}`}>
+            {/* Top Badge & SLA */}
             <div>
-              <div className="bg-slate-950 border border-slate-800 p-4 rounded-2xl mb-4">
-                <span className="text-[10px] font-bold uppercase text-purple-400 block mb-1">{p.client}</span>
-                <h4 className="text-lg font-serif font-bold text-white">{p.title}</h4>
-                <p className="text-[11px] text-slate-400 mt-1">{p.subtitle}</p>
+              <div className="flex items-center justify-between mb-4">
+                <span className={`text-[10px] font-extrabold uppercase tracking-widest px-3 py-1 rounded-full border ${project.badgeColor}`}>
+                  {project.vitals}
+                </span>
+                <span className="text-[10px] font-mono text-emerald-400 bg-emerald-950/80 px-2.5 py-1 rounded-md border border-emerald-800 flex items-center gap-1">
+                  <CheckCircle2 className="w-3 h-3 text-emerald-400" />
+                  100/100
+                </span>
               </div>
-              <p className="text-xs text-slate-400 leading-relaxed mb-6">{p.desc}</p>
+
+              {/* Title & Category */}
+              <h3 className="text-2xl font-serif font-bold text-white mb-1 group-hover:text-purple-300 transition-colors">
+                {project.title}
+              </h3>
+              <p className="text-xs font-medium text-purple-400 mb-4">
+                {project.category}
+              </p>
+
+              {/* Description */}
+              <p className="text-slate-300 text-xs leading-relaxed mb-6">
+                {project.description}
+              </p>
             </div>
 
-            <a
-              href={p.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full py-3 rounded-xl bg-slate-950 hover:bg-slate-800 border border-slate-800 text-white text-xs font-bold flex items-center justify-center gap-2 transition-all"
-            >
-              <span>Explore Deployment</span>
-              <ExternalLink className="w-3.5 h-3.5 text-purple-400" />
-            </a>
-          </div>
+            {/* Bottom Tech Tags & Launch Button */}
+            <div>
+              <div className="flex flex-wrap gap-1.5 mb-6 pt-4 border-t border-slate-800/80">
+                {project.tags.map((tag, tIdx) => (
+                  <span
+                    key={tIdx}
+                    className="text-[9px] font-mono font-medium px-2.5 py-1 rounded-md bg-slate-900 text-slate-400 border border-slate-800"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-3 px-4 rounded-xl bg-slate-900 hover:bg-purple-600/20 border border-slate-800 hover:border-purple-500/50 text-white font-bold text-xs flex items-center justify-center gap-2 transition-all group/btn shadow-md"
+              >
+                <span>Launch Production Platform</span>
+                <ArrowUpRight className="w-4 h-4 text-purple-400 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+              </a>
+            </div>
+          </SpotlightCard>
         ))}
       </div>
     </section>
