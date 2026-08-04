@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import { ExternalLink, Zap, CheckCircle2 } from "lucide-react";
 
 interface Project {
@@ -30,8 +29,8 @@ const projects: Project[] = [
       "Vercel Edge",
     ],
     imageUrl:
-      "https://res.cloudinary.com/dmkjnuolr/image/upload/v1785856193/Screenshot_2026-08-04_203429_dmqlwu.png", // Paste Cloudinary image URL here
-    liveUrl: "https://www.kathainteriors.in/", // Paste Live Web Link here
+      "https://res.cloudinary.com/dmkjnuolr/image/upload/v1785856193/Screenshot_2026-08-04_203429_dmqlwu.png",
+    liveUrl: "https://www.kathainteriors.in/",
   },
   {
     title: "Annapurna Farms & Seeds",
@@ -42,8 +41,8 @@ const projects: Project[] = [
     vitals: "100/100",
     tags: ["React 19", "TypeScript", "Prisma Database", "Tailwind CSS"],
     imageUrl:
-      "https://res.cloudinary.com/dmkjnuolr/image/upload/v1785856192/Screenshot_2026-08-04_203921_szrblv.png", // Paste Cloudinary image URL here
-    liveUrl: "https://stackblitz-starters-ua4suytn.vercel.app/", // Paste Live Web Link here
+      "https://res.cloudinary.com/dmkjnuolr/image/upload/v1785856192/Screenshot_2026-08-04_203921_szrblv.png",
+    liveUrl: "https://stackblitz-starters-ua4suytn.vercel.app/",
   },
   {
     title: "Aveorahs Interior Studios",
@@ -59,8 +58,8 @@ const projects: Project[] = [
       "Zero-Plugin Security",
     ],
     imageUrl:
-      "https://res.cloudinary.com/dmkjnuolr/image/upload/v1785856192/Screenshot_2026-08-04_203803_ghhdrl.png", // Paste Cloudinary image URL here
-    liveUrl: "https://mwc946-3000.csb.app/", // Paste Live Web Link here
+      "https://res.cloudinary.com/dmkjnuolr/image/upload/v1785856192/Screenshot_2026-08-04_203803_ghhdrl.png",
+    liveUrl: "https://mwc946-3000.csb.app/",
   },
 ];
 
@@ -90,20 +89,19 @@ export default function WorkSection() {
             key={idx}
             className="group relative bg-slate-900/60 border border-slate-800/80 hover:border-purple-500/50 rounded-3xl overflow-hidden backdrop-blur-xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(168,85,247,0.15)]"
           >
-            {/* Top Preview Image Container with Link */}
+            {/* Top Preview Image Container with Hyperlink */}
             <a
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="relative w-full h-48 bg-slate-950 overflow-hidden block border-b border-slate-800/80"
+              className="relative w-full h-52 bg-slate-950 overflow-hidden block border-b border-slate-800/80 group/img"
             >
-              <Image
+              <img
                 src={project.imageUrl}
                 alt={`${project.title} Preview`}
-                fill
-                className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                className="w-full h-full object-cover object-top transition-transform duration-500 group-hover/img:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-60" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-60" />
             </a>
 
             {/* Content Body */}
