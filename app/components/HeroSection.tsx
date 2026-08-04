@@ -2,18 +2,18 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Sparkles, ArrowRight, ShieldCheck, CheckCircle2, Cpu, Activity, Zap, Layers } from "lucide-react";
+import { Sparkles, ArrowRight, ShieldCheck, CheckCircle2, Zap } from "lucide-react";
 
 export default function HeroSection({ onOpenModal }: { onOpenModal: () => void }) {
   return (
     <section className="relative pt-32 pb-20 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
       {/* Background Ambient Mesh Glows */}
-      <div className="absolute top-12 left-1/3 -translate-x-1/2 w-[550px] h-[550px] bg-purple-600/25 rounded-full blur-[150px] pointer-events-none animate-pulse" />
-      <div className="absolute top-36 right-10 w-[500px] h-[500px] bg-indigo-600/20 rounded-full blur-[130px] pointer-events-none" />
+      <div className="absolute top-12 left-1/3 -translate-x-1/2 w-[600px] h-[600px] bg-purple-600/30 rounded-full blur-[150px] pointer-events-none animate-pulse" />
+      <div className="absolute top-36 right-10 w-[500px] h-[500px] bg-indigo-600/25 rounded-full blur-[130px] pointer-events-none" />
 
       <div className="grid lg:grid-cols-12 gap-12 items-center relative z-10">
         
-        {/* LEFT COLUMN: Agency Headline & Core Pitch */}
+        {/* LEFT COLUMN: Agency Headline & Pitch */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -31,7 +31,7 @@ export default function HeroSection({ onOpenModal }: { onOpenModal: () => void }
             </span>
           </div>
 
-          {/* High-Contrast Main Headline */}
+          {/* Headline */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-white leading-[1.08] tracking-tight">
             We Engineer Next-Gen{" "}
             <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-amber-300 bg-clip-text text-transparent">
@@ -77,77 +77,48 @@ export default function HeroSection({ onOpenModal }: { onOpenModal: () => void }
           </div>
         </motion.div>
 
-        {/* RIGHT COLUMN: Solid 3D Moving Mesh & Interactive Telemetry Canvas */}
+        {/* RIGHT COLUMN: Pure Futuristic 3D Visual/Video Canvas */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, delay: 0.1 }}
           className="lg:col-span-6 relative"
         >
-          {/* Main 3D Stage Card */}
-          <div className="bg-slate-950/90 border border-slate-800 rounded-[2.5rem] p-6 shadow-2xl relative overflow-hidden group">
+          <div className="relative rounded-[2.5rem] p-1 bg-gradient-to-b from-purple-500/40 via-indigo-500/20 to-slate-900 shadow-2xl overflow-hidden group">
             
-            {/* Fake Chrome Top Bar */}
-            <div className="bg-slate-900/80 border border-slate-800 px-4 py-2.5 rounded-2xl flex items-center justify-between mb-6 backdrop-blur-sm relative z-20">
-              <div className="flex items-center gap-1.5">
-                <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
-                <div className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
-                <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
-              </div>
-              <div className="bg-slate-950 text-[10px] text-purple-300 font-mono px-3.5 py-1 rounded-lg border border-slate-800 flex items-center gap-1.5">
-                <Cpu className="w-3 h-3 text-purple-400" />
-                <span>aetheria-engine://3d-webgpu-render.active</span>
-              </div>
-              <span className="text-[9px] font-mono font-bold text-emerald-400 bg-emerald-950/80 px-2.5 py-0.5 rounded border border-emerald-800">
-                0.29s LCP
-              </span>
-            </div>
-
-            {/* Solid 3D Animated Viewport Stage */}
-            <div className="relative h-[340px] rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 p-6 flex flex-col justify-between overflow-hidden shadow-inner">
+            {/* Visual Canvas Container */}
+            <div className="relative h-[420px] rounded-[2.3rem] bg-slate-950 overflow-hidden flex items-center justify-center">
               
-              {/* Rotating 3D Mesh Geometry & Orbiting Particle Field */}
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                {/* Outer Glowing Ring */}
-                <div className="w-64 h-64 rounded-full border border-purple-500/20 bg-purple-600/10 blur-xl animate-pulse" />
-                
-                {/* Orbiting Ring 1 */}
-                <div className="absolute w-52 h-52 rounded-full border-2 border-dashed border-purple-500/40 animate-[spin_12s_linear_infinite]" />
-                
-                {/* Orbiting Ring 2 */}
-                <div className="absolute w-40 h-40 rounded-full border-2 border-amber-400/30 animate-[spin_8s_linear_infinite_reverse]" />
+              {/* Autoplay Futuristic 3D Video Loop (with smooth fallback animation) */}
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover opacity-85 group-hover:scale-105 transition-transform duration-1000"
+                poster="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop"
+              >
+                <source
+                  src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-screens-and-data-42838-large.mp4"
+                  type="video/mp4"
+                />
+              </video>
 
-                {/* Central 3D Floating Glass Core */}
-                <div className="w-28 h-28 rounded-3xl border-2 border-purple-400/40 bg-gradient-to-tr from-purple-600/30 via-indigo-500/20 to-pink-500/30 backdrop-blur-xl flex items-center justify-center shadow-2xl shadow-purple-500/30 transform rotate-45 animate-bounce">
-                  <div className="w-14 h-14 rounded-2xl bg-slate-950/80 border border-purple-400/50 flex items-center justify-center text-amber-300 shadow-lg">
-                    <Activity className="w-7 h-7 text-amber-300 animate-pulse" />
+              {/* Glowing Ambient Gradient Overlays */}
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-purple-900/20 pointer-events-none" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(2,6,23,0.6)_100%)] pointer-events-none" />
+
+              {/* Futuristic Glass Orbital Accent Element */}
+              <div className="relative z-10 w-48 h-48 rounded-full border border-white/20 bg-white/5 backdrop-blur-md flex items-center justify-center shadow-2xl shadow-purple-500/20 animate-[spin_20s_linear_infinite]">
+                <div className="w-32 h-32 rounded-full border-2 border-dashed border-purple-400/50 animate-[spin_10s_linear_infinite_reverse]" />
+                <div className="absolute w-16 h-16 rounded-2xl bg-gradient-to-tr from-purple-600 via-pink-500 to-amber-300 p-[1.5px] shadow-xl animate-bounce">
+                  <div className="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center">
+                    <Sparkles className="w-8 h-8 text-amber-300" />
                   </div>
                 </div>
               </div>
 
-              {/* Floating Top Telemetry Widget */}
-              <div className="relative z-10 flex justify-between items-start">
-                <span className="text-[10px] font-extrabold uppercase tracking-widest px-3 py-1 rounded-full border border-purple-500/40 bg-purple-950/80 text-purple-300 shadow-md">
-                  WebGPU 60 FPS Render
-                </span>
-                <span className="text-xs font-mono text-emerald-400 bg-slate-950/90 px-2.5 py-1 rounded-md border border-slate-800">
-                  Vitals: 100/100 Verified
-                </span>
-              </div>
-
-              {/* Floating Bottom Telemetry Widget */}
-              <div className="relative z-10 bg-slate-950/90 border border-slate-800 rounded-2xl p-4 shadow-2xl backdrop-blur-md max-w-xs">
-                <div className="flex items-center gap-2 mb-1">
-                  <Layers className="w-4 h-4 text-purple-400" />
-                  <h4 className="text-sm font-serif font-bold text-white">Next.js Edge Architecture</h4>
-                </div>
-                <p className="text-[11px] text-slate-400 leading-snug">
-                  Zero-runtime React hydration, sub-second LCP, and edge server-side streaming.
-                </p>
-              </div>
-
             </div>
-
           </div>
         </motion.div>
 
