@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
-import { X, CheckCircle2, ChevronRight, Send } from "lucide-react";
+import { toast } from "sonner";
+import { X, Send, Sparkles } from "lucide-react";
 
 export default function ContactModal({
   isOpen,
@@ -12,213 +12,141 @@ export default function ContactModal({
   isOpen: boolean;
   onClose: () => void;
 }) {
-  const [step, setStep] = useState(1);
+  const formRef = useRef<HTMLFormElement>(null);
   const [loading, setLoading] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-
-  const [formData, setFormData] = useState({
-    name: "",
-    businessName: "",
-    email: "",
-    timeline: "Immediate",
-    notes: "",
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-
-    emailjs
-      .send(
-        "YOUR_SERVICE_ID",
-        "YOUR_TEMPLATE_ID",
-        {
-          from_name: formData.name,
-          business_name: formData.businessName,
-          reply_to: formData.email,
-          project_timeline: formData.timeline,
-          message: formData.notes,
-        },
-        "YOUR_PUBLIC_KEY"
-      )
-      .then(
-        () => {
-          setLoading(false);
-          setSubmitted(true);
-        },
-        (error) => {
-          setLoading(false);
-          console.error("EmailJS Submission Error:", error);
-          alert("Submission failed. Please check EmailJS setup keys.");
-        }
-      );
-  };
 
   if (!isOpen) return null;
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "";
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "";
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "";
+
+    if (!serviceId || !templateId || !publicKey) {
+      toast.error("EmailJS keys missing. Please verify .env.local variables.");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      if (formRef.current) {
+        await emailjs.sendForm(serviceId, templateId, formRef.current, {
+          publicKey,
+        });
+        toast.success("Proposal brief sent successfully! We will get back to you shortly.");
+        onClose();
+      }
+    } catch (err) {
+      console.error("EmailJS Submission Error:", err);
+      toast.error("Failed to deliver proposal. Please try again or call us.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-obsidian/40 backdrop-blur-md">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.95 }}
-          className="bg-white border border-slate-200 rounded-3xl p-6 md:p-8 max-w-lg w-full relative shadow-2xl"
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-obsidian/80 backdrop-blur-md">
+      <div className="bg-white border border-slate-200 rounded-[2rem] p-6 md:p-8 max-w-lg w-full relative shadow-2xl">
+        <button
+          onClick={onClose}
+          className="absolute top-5 right-5 p-2 rounded-full bg-slate-100 text-slate-500 hover:text-obsidian transition-all"
         >
-          <button
-            onClick={onClose}
-            className="absolute top-6 right-6 text-slate-400 hover:text-obsidian"
-          >
-            <X className="w-5 h-5" />
-          </button>
+          <X className="w-5 h-5" />
+        </button>
 
-          {!submitted ? (
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="mb-4">
-                <h3 className="text-2xl font-bold font-serif text-obsidian">
-                  Start a Project
-                </h3>
-                <p className="text-xs text-slate-500 mt-1">
-                  Step {step} of 2 &mdash; Let&apos;s build your custom web architecture.
-                </p>
-              </div>
+        <div className="mb-6">
+          <span className="text-xs font-extrabold uppercase tracking-widest text-amber-900 bg-amber-50 px-3 py-1 rounded-full border border-amber-200 inline-flex items-center gap-1.5 mb-2">
+            <Sparkles className="w-3 h-3 text-amber-600" />
+            Request Proposal
+          </span>
+          <h3 className="text-2xl font-serif font-bold text-slate-900">
+            Submit Your Technical Brief
+          </h3>
+          <p className="text-xs text-slate-500 mt-1">
+            Receive a detailed architectural proposal within 24 hours.
+          </p>
+        </div>
 
-              {step === 1 && (
-                <div className="space-y-4">
-                  <div>
-                    <label className="block text-xs font-semibold text-slate-700 mb-1">
-                      Your Name *
-                    </label>
-                    <input
-                      required
-                      type="text"
-                      value={formData.name}
-                      onChange={(e) =>
-                        setFormData({ ...formData, name: e.target.value })
-                      }
-                      className="w-full bg-ivory border border-slate-200 rounded-xl px-4 py-2.5 text-sm text-obsidian focus:outline-none focus:border-champagne"
-                      placeholder="e.g. Rahul Sharma"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-semibold text-slate-700 mb-1">
-                      Business / Brand Name *
-                    </label>
-                    <input
-                      required
-                      type="text"
-                      value={formData.businessName}
-                      onChange={(e) =>
-                        setFormData({ ...formData, businessName: e.target.value })
-                      }
-                      className="w-full bg-ivory border border-slate-200 rounded-xl px-4 py-2.5 text-sm text-obsidian focus:outline-none focus:border-champagne"
-                      placeholder="e.g. Sharma Capital"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-semibold text-slate-700 mb-1">
-                      Email Address *
-                    </label>
-                    <input
-                      required
-                      type="email"
-                      value={formData.email}
-                      onChange={(e) =>
-                        setFormData({ ...formData, email: e.target.value })
-                      }
-                      className="w-full bg-ivory border border-slate-200 rounded-xl px-4 py-2.5 text-sm text-obsidian focus:outline-none focus:border-champagne"
-                      placeholder="rahul@sharmacapital.in"
-                    />
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => setStep(2)}
-                    className="w-full bg-obsidian text-white font-semibold py-3 rounded-xl text-sm mt-2 flex items-center justify-center gap-2"
-                  >
-                    <span>Next Step</span>
-                    <ChevronRight className="w-4 h-4 text-champagne" />
-                  </button>
-                </div>
-              )}
+        <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label className="text-[11px] font-bold text-slate-500 block mb-1 uppercase">
+              Full Name *
+            </label>
+            <input
+              required
+              type="text"
+              name="from_name"
+              placeholder="e.g. Alex Morgan"
+              className="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs font-semibold focus:outline-none focus:border-slate-900"
+            />
+          </div>
 
-              {step === 2 && (
-                <div className="space-y-4">
-                  <div>
-                    <label className="block text-xs font-semibold text-slate-700 mb-1">
-                      Desired Timeline
-                    </label>
-                    <select
-                      value={formData.timeline}
-                      onChange={(e) =>
-                        setFormData({ ...formData, timeline: e.target.value })
-                      }
-                      className="w-full bg-ivory border border-slate-200 rounded-xl px-4 py-2.5 text-sm text-obsidian focus:outline-none focus:border-champagne"
-                    >
-                      <option>Immediate (Within 30 Days)</option>
-                      <option>1-2 Months</option>
-                      <option>Flexible / Planning Phase</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-xs font-semibold text-slate-700 mb-1">
-                      Project Scope Notes
-                    </label>
-                    <textarea
-                      rows={3}
-                      value={formData.notes}
-                      onChange={(e) =>
-                        setFormData({ ...formData, notes: e.target.value })
-                      }
-                      className="w-full bg-ivory border border-slate-200 rounded-xl px-4 py-2.5 text-sm text-obsidian focus:outline-none focus:border-champagne"
-                      placeholder="Briefly describe your objectives..."
-                    />
-                  </div>
-                  <div className="flex gap-2">
-                    <button
-                      type="button"
-                      onClick={() => setStep(1)}
-                      className="w-1/3 border border-slate-200 text-slate-700 font-semibold py-3 rounded-xl text-sm"
-                    >
-                      Back
-                    </button>
-                    <button
-                      type="submit"
-                      disabled={loading}
-                      className="w-2/3 bg-emerald-accent hover:bg-emerald-hover text-white font-semibold py-3 rounded-xl text-sm flex items-center justify-center gap-2"
-                    >
-                      {loading ? (
-                        <span>Submitting...</span>
-                      ) : (
-                        <>
-                          <Send className="w-4 h-4" />
-                          <span>Submit Proposal</span>
-                        </>
-                      )}
-                    </button>
-                  </div>
-                </div>
-              )}
-            </form>
-          ) : (
-            <div className="py-12 text-center space-y-4">
-              <CheckCircle2 className="w-16 h-16 text-emerald-accent mx-auto" />
-              <h3 className="text-2xl font-bold font-serif text-obsidian">
-                Proposal Received
-              </h3>
-              <p className="text-slate-600 text-sm max-w-xs mx-auto">
-                Thank you, {formData.name}. Our principal architect will review
-                your project scope and respond within 24 hours.
-              </p>
-              <button
-                onClick={onClose}
-                className="bg-obsidian text-white font-semibold px-6 py-2.5 rounded-full text-sm mt-4"
-              >
-                Close Window
-              </button>
+          <div className="grid grid-cols-2 gap-3">
+            <div>
+              <label className="text-[11px] font-bold text-slate-500 block mb-1 uppercase">
+                Email *
+              </label>
+              <input
+                required
+                type="email"
+                name="from_email"
+                placeholder="alex@brand.com"
+                className="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs font-semibold focus:outline-none focus:border-slate-900"
+              />
             </div>
-          )}
-        </motion.div>
+            <div>
+              <label className="text-[11px] font-bold text-slate-500 block mb-1 uppercase">
+                Phone
+              </label>
+              <input
+                type="tel"
+                name="phone"
+                placeholder="+91 98765 43210"
+                className="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs font-semibold focus:outline-none focus:border-slate-900"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label className="text-[11px] font-bold text-slate-500 block mb-1 uppercase">
+              Architecture Type
+            </label>
+            <select
+              name="project_type"
+              className="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs font-semibold focus:outline-none focus:border-slate-900"
+            >
+              <option value="Custom Next.js Web App">Custom Next.js Web App</option>
+              <option value="AgriTech / Multi-Catalog Portal">AgriTech / Multi-Catalog Portal</option>
+              <option value="Bespoke Architecture Showcase">Bespoke Architecture Showcase</option>
+            </select>
+          </div>
+
+          <div>
+            <label className="text-[11px] font-bold text-slate-500 block mb-1 uppercase">
+              Scope Brief & Timeline
+            </label>
+            <textarea
+              required
+              rows={3}
+              name="message"
+              placeholder="Tell us about your brand goals and requirements..."
+              className="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs font-semibold focus:outline-none focus:border-slate-900 resize-none"
+            />
+          </div>
+
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full py-3 bg-obsidian hover:bg-slate-800 text-white font-bold rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg transition-all"
+          >
+            <span>{loading ? "Sending Brief..." : "Submit Proposal Brief"}</span>
+            <Send className="w-3.5 h-3.5 text-champagne" />
+          </button>
+        </form>
       </div>
-    </AnimatePresence>
+    </div>
   );
 }
