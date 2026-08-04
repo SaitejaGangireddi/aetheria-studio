@@ -50,9 +50,10 @@ export default function ProposalModal({
       } else {
         throw new Error(`EmailJS responded with status ${response.status}`);
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error("EmailJS Error:", err);
-      const text = err?.text || err?.message || "Failed to dispatch email brief";
+      const error = err as { text?: string; message?: string };
+      const text = error?.text || error?.message || "Failed to dispatch email brief";
       setErrorMsg(`Dispatch Error: ${text}`);
     } finally {
       setLoading(false);

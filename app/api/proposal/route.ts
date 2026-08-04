@@ -46,10 +46,11 @@ export async function POST(request: Request) {
     await transporter.sendMail(mailOptions);
 
     return NextResponse.json({ success: true });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("API Send Error:", error);
+    const err = error as Error;
     return NextResponse.json(
-      { error: error?.message || "Failed to dispatch email" },
+      { error: err?.message || "Failed to dispatch email" },
       { status: 500 }
     );
   }
