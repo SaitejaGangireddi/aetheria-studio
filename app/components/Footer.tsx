@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import { LOGO_URL } from "../constants/brand";
 
 export default function Footer() {
@@ -10,13 +9,11 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         {/* Custom Brand Logo */}
         <div className="flex items-center gap-2.5">
-          <div className="relative w-7 h-7 flex items-center justify-center">
-            <Image
+          <div className="w-7 h-7 flex items-center justify-center shrink-0">
+            <img
               src={LOGO_URL} 
               alt="DesignerPal Logo"
-              width={28}
-              height={28}
-              className="object-contain w-auto h-auto max-h-7"
+              className="w-7 h-7 object-contain"
             />
           </div>
           <span className="font-serif font-bold text-base text-white">

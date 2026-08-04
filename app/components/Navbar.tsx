@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
 import { Sparkles, ArrowRight, Menu, X } from "lucide-react";
 import { LOGO_URL } from "../constants/brand";
 
@@ -13,14 +12,11 @@ export default function Navbar({ onOpenModal }: { onOpenModal: () => void }) {
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Custom Brand Logo */}
         <a href="#" className="flex items-center gap-3 group">
-          <div className="relative w-9 h-9 flex items-center justify-center">
-            <Image
+          <div className="w-9 h-9 flex items-center justify-center shrink-0">
+            <img
               src={LOGO_URL} 
               alt="DesignerPal Logo"
-              width={36}
-              height={36}
-              className="object-contain w-auto h-auto max-h-9 transition-transform group-hover:scale-105"
-              priority
+              className="w-9 h-9 object-contain transition-transform group-hover:scale-105"
             />
           </div>
           <span className="font-serif font-bold text-xl tracking-tight text-white group-hover:text-purple-300 transition-colors">
