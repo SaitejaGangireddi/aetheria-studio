@@ -1,28 +1,27 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
-import { Sparkles, ArrowRight, ShieldCheck, CheckCircle2, Layout, Monitor, Globe, Server, Code2 } from "lucide-react";
+import { Sparkles, ArrowRight, ShieldCheck, CheckCircle2, Layout, Zap } from "lucide-react";
 
 export default function HeroSection({ onOpenModal }: { onOpenModal: () => void }) {
-  const [activeTab, setActiveTab] = useState<"platform" | "architecture" | "speed">("platform");
-
   return (
     <section className="relative pt-32 pb-24 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
-      {/* Background Ambient Mesh Glows */}
-      <div className="absolute top-10 left-1/4 -translate-x-1/2 w-[650px] h-[650px] bg-purple-600/20 rounded-full blur-[160px] pointer-events-none animate-pulse" />
-      <div className="absolute top-36 right-10 w-[550px] h-[550px] bg-indigo-600/20 rounded-full blur-[140px] pointer-events-none" />
+      {/* Dynamic Background Neon Radial Orbs */}
+      <div className="absolute top-10 left-1/4 -translate-x-1/2 w-[700px] h-[700px] bg-purple-600/25 rounded-full blur-[170px] pointer-events-none animate-pulse" />
+      <div className="absolute top-36 right-10 w-[600px] h-[600px] bg-indigo-600/20 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-10 right-1/3 w-[500px] h-[500px] bg-pink-600/15 rounded-full blur-[160px] pointer-events-none" />
 
       <div className="grid lg:grid-cols-12 gap-12 items-center relative z-10">
         
-        {/* LEFT COLUMN: Accurate High-Ticket Agency Messaging */}
+        {/* LEFT COLUMN: Agency Pitch & High-Contrast Typography */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="lg:col-span-6 space-y-7"
         >
-          {/* Status Capsule */}
+          {/* Status Badge */}
           <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-slate-900/90 border border-slate-800 shadow-md backdrop-blur-md">
             <span className="relative flex h-2.5 w-2.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -33,7 +32,7 @@ export default function HeroSection({ onOpenModal }: { onOpenModal: () => void }
             </span>
           </div>
 
-          {/* Corrected Headline: Full Web Platforms & Enterprise Applications */}
+          {/* Main Headline */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-white leading-[1.08] tracking-tight">
             We Engineer Next-Gen{" "}
             <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-amber-300 bg-clip-text text-transparent">
@@ -50,7 +49,7 @@ export default function HeroSection({ onOpenModal }: { onOpenModal: () => void }
           <div className="flex flex-wrap items-center gap-4 pt-2">
             <button
               onClick={onOpenModal}
-              className="px-8 py-4 bg-gradient-to-r from-purple-600 via-indigo-600 to-purple-700 hover:from-purple-500 hover:to-indigo-500 text-white font-bold text-xs rounded-2xl shadow-2xl flex items-center gap-2.5 transition-all hover:scale-105 border border-purple-400/30 group"
+              className="px-8 py-4 bg-gradient-to-r from-purple-600 via-indigo-600 to-purple-700 hover:from-purple-500 hover:to-indigo-500 text-white font-bold text-xs rounded-2xl shadow-[0_0_30px_rgba(168,85,247,0.4)] flex items-center gap-2.5 transition-all hover:scale-105 border border-purple-400/30 group"
             >
               <Sparkles className="w-4 h-4 text-amber-300 group-hover:rotate-12 transition-transform" />
               <span>Start Project Brief</span>
@@ -79,110 +78,68 @@ export default function HeroSection({ onOpenModal }: { onOpenModal: () => void }
           </div>
         </motion.div>
 
-        {/* RIGHT COLUMN: Futuristic 3D Multi-Layer Web Platform Canvas */}
+        {/* RIGHT COLUMN: Illuminated 3D Isometric Tech Stage Visual */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="lg:col-span-6 relative"
+          className="lg:col-span-6 relative flex justify-center"
         >
-          {/* Interactive Feature Switcher Bar */}
-          <div className="flex justify-center gap-2 mb-4 bg-slate-900/90 p-1.5 rounded-2xl border border-slate-800 backdrop-blur-md max-w-md mx-auto">
-            <button
-              onClick={() => setActiveTab("platform")}
-              className={`px-3 py-1.5 rounded-xl text-[10px] font-bold transition-all ${
-                activeTab === "platform"
-                  ? "bg-purple-600 text-white shadow-md"
-                  : "text-slate-400 hover:text-white"
-              }`}
-            >
-              Web Applications
-            </button>
-            <button
-              onClick={() => setActiveTab("architecture")}
-              className={`px-3 py-1.5 rounded-xl text-[10px] font-bold transition-all ${
-                activeTab === "architecture"
-                  ? "bg-indigo-600 text-white shadow-md"
-                  : "text-slate-400 hover:text-white"
-              }`}
-            >
-              Edge System
-            </button>
-            <button
-              onClick={() => setActiveTab("speed")}
-              className={`px-3 py-1.5 rounded-xl text-[10px] font-bold transition-all ${
-                activeTab === "speed"
-                  ? "bg-emerald-600 text-white shadow-md"
-                  : "text-slate-400 hover:text-white"
-              }`}
-            >
-              Sub-Second SLA
-            </button>
-          </div>
-
-          {/* Main 3D Canvas Box */}
-          <div className="bg-slate-950/90 border border-slate-800 rounded-[2.5rem] p-6 shadow-2xl relative overflow-hidden group">
+          {/* Main 3D Isometric Composition Stage */}
+          <div className="relative w-full max-w-[540px] h-[480px] flex items-center justify-center">
             
-            {/* Fake Chrome Address Bar */}
-            <div className="bg-slate-900/80 border border-slate-800 px-4 py-2.5 rounded-2xl flex items-center justify-between mb-5 backdrop-blur-sm relative z-20">
-              <div className="flex items-center gap-1.5">
-                <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
-                <div className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
-                <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
-              </div>
-              <div className="bg-slate-950 text-[10px] text-purple-300 font-mono px-3.5 py-1 rounded-lg border border-slate-800 flex items-center gap-1.5">
-                <Globe className="w-3 h-3 text-purple-400" />
-                <span>aetheria-platform.app/enterprise</span>
-              </div>
-              <span className="text-[9px] font-mono font-bold text-emerald-400 bg-emerald-950/80 px-2.5 py-0.5 rounded border border-emerald-800">
-                0.31s LCP
-              </span>
-            </div>
+            {/* Background Radial Light Beam */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-purple-600/30 via-pink-500/20 to-indigo-600/30 rounded-[3rem] blur-2xl transform rotate-6 pointer-events-none" />
 
-            {/* Interactive 3D Multi-Layer Visual Stage */}
-            <div className="relative min-h-[310px] rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-950 via-slate-900 to-purple-950/40 p-6 flex flex-col justify-between overflow-hidden">
+            {/* Glowing Neon Isometric Base Platform */}
+            <div className="relative w-[380px] h-[260px] bg-gradient-to-tr from-slate-950 via-purple-950/80 to-slate-950 border-2 border-purple-500/50 rounded-[3rem] shadow-[0_0_80px_rgba(168,85,247,0.35)] transform -rotate-12 hover:rotate-0 transition-transform duration-700 backdrop-blur-xl flex flex-col items-center justify-center p-6">
               
-              {/* Layer 1: Simulated Web App Header */}
-              <div className="relative z-10 flex items-center justify-between border-b border-slate-800 pb-3">
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-md bg-purple-500" />
-                  <span className="text-xs font-serif font-bold text-white">Full-Stack Application Layer</span>
-                </div>
-                <span className="text-[9px] font-mono text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-800">
-                  Next.js App Router
-                </span>
-              </div>
+              {/* Outer Neon Orbit Ring */}
+              <div className="absolute w-[320px] h-[320px] rounded-full border border-purple-400/40 animate-[spin_16s_linear_infinite] pointer-events-none" />
+              <div className="absolute w-[260px] h-[260px] rounded-full border-2 border-dashed border-pink-400/40 animate-[spin_10s_linear_infinite_reverse] pointer-events-none" />
 
-              {/* Layer 2: 3D Floating Code-to-UI Cards */}
-              <div className="relative z-10 my-4 grid grid-cols-2 gap-3">
-                <div className="bg-slate-950/90 border border-slate-800 rounded-xl p-3.5 shadow-xl backdrop-blur-md hover:border-purple-500/40 transition-colors">
-                  <div className="flex items-center justify-between mb-2">
-                    <Code2 className="w-4 h-4 text-purple-400" />
-                    <span className="text-[9px] font-mono text-slate-400">SSR / Edge</span>
-                  </div>
-                  <h4 className="text-xs font-bold text-white">Dynamic Catalog Engine</h4>
-                  <p className="text-[10px] text-slate-400 mt-1">Multi-tier product filtering & instant search</p>
+              {/* Central Holographic Emblem */}
+              <div className="w-24 h-28 rounded-3xl bg-gradient-to-tr from-purple-600 via-pink-500 to-amber-400 p-[2px] shadow-[0_0_40px_rgba(236,72,153,0.5)] animate-bounce">
+                <div className="w-full h-full bg-slate-950 rounded-[22px] flex items-center justify-center text-amber-300">
+                  <Sparkles className="w-10 h-10 text-amber-300" />
                 </div>
-
-                <div className="bg-slate-950/90 border border-slate-800 rounded-xl p-3.5 shadow-xl backdrop-blur-md hover:border-emerald-500/40 transition-colors">
-                  <div className="flex items-center justify-between mb-2">
-                    <Server className="w-4 h-4 text-emerald-400" />
-                    <span className="text-[9px] font-mono text-emerald-400">99.99% SLA</span>
-                  </div>
-                  <h4 className="text-xs font-bold text-white">Zero-Plugin Security</h4>
-                  <p className="text-[10px] text-slate-400 mt-1">Enterprise hardened without PHP bloat</p>
-                </div>
-              </div>
-
-              {/* Layer 3: Live Telemetry Footer Bar */}
-              <div className="relative z-10 flex items-center justify-between pt-3 border-t border-slate-800 text-[10px] font-mono text-slate-400">
-                <span className="flex items-center gap-1.5 text-purple-300">
-                  <Monitor className="w-3.5 h-3.5" /> Multi-Page Ecosystem
-                </span>
-                <span className="text-emerald-400 font-bold">100/100 Vitals Verified</span>
               </div>
 
             </div>
+
+            {/* Floating Glassmorphic Badge 1: Top Left Code Card */}
+            <div className="absolute top-6 left-2 bg-slate-950/90 border border-purple-500/40 px-4 py-3 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.8)] backdrop-blur-xl flex items-center gap-3 animate-pulse">
+              <div className="w-8 h-8 rounded-xl bg-purple-600/30 border border-purple-400/50 flex items-center justify-center text-purple-300 font-mono font-bold text-xs">
+                &lt;/&gt;
+              </div>
+              <div>
+                <span className="block text-[10px] font-extrabold uppercase text-slate-400">Architecture</span>
+                <span className="block text-xs font-bold text-white">Pure React & Next.js</span>
+              </div>
+            </div>
+
+            {/* Floating Glassmorphic Badge 2: SLA Pillar Right */}
+            <div className="absolute top-20 right-0 bg-slate-950/90 border border-emerald-500/40 px-4 py-2.5 rounded-2xl shadow-2xl backdrop-blur-xl flex items-center gap-2">
+              <Zap className="w-4 h-4 text-emerald-400" />
+              <span className="text-xs font-mono font-extrabold text-emerald-400">99.99% SLA Uptime</span>
+            </div>
+
+            {/* Floating Glassmorphic Badge 3: Mobile Telemetry Frame */}
+            <div className="absolute bottom-8 right-4 bg-slate-950/90 border border-slate-800 p-4 rounded-3xl shadow-2xl backdrop-blur-xl w-44">
+              <div className="flex items-center justify-between border-b border-slate-800 pb-2 mb-2">
+                <span className="text-[9px] font-mono text-slate-400">Lighthouse</span>
+                <span className="text-[10px] font-mono font-bold text-emerald-400">100/100</span>
+              </div>
+              <div className="space-y-1.5">
+                <div className="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                  <div className="bg-emerald-400 h-full w-full" />
+                </div>
+                <span className="text-[9px] text-slate-400 block font-mono">Core Web Vitals SLA</span>
+              </div>
+            </div>
+
+            {/* Floating Cube Accents */}
+            <div className="absolute bottom-4 left-10 w-12 h-12 bg-purple-900/60 border border-purple-500/40 rounded-xl transform rotate-45 backdrop-blur-md shadow-xl animate-pulse" />
 
           </div>
         </motion.div>
