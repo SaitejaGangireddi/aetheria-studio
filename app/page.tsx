@@ -3,12 +3,15 @@
 import React, { useState, useEffect } from "react";
 import Lenis from "lenis";
 import { Sparkles } from "lucide-react";
+import { Toaster } from "sonner";
 
 import Navbar from "./components/Navbar";
 import FloatingSocialDock from "./components/FloatingSocialDock";
 import HeroSection from "./components/HeroSection";
 import SpeedAuditSection from "./components/SpeedAuditSection";
+import PerformanceGaugesSection from "./components/PerformanceGaugesSection";
 import DesignConfiguratorSection from "./components/DesignConfiguratorSection";
+import ScopeCalculatorSection from "./components/ScopeCalculatorSection";
 import ComparisonSection from "./components/ComparisonSection";
 import ServicesSection from "./components/ServicesSection";
 import PortfolioSection from "./components/PortfolioSection";
@@ -37,13 +40,16 @@ export default function Page() {
 
   return (
     <div className="bg-ivory text-obsidian min-h-screen selection:bg-champagne/20 font-sans antialiased overflow-x-hidden">
+      <Toaster position="bottom-left" theme="dark" />
       <Navbar onOpenModal={() => setIsModalOpen(true)} />
       <FloatingSocialDock />
 
       <main id="main-content">
         <HeroSection onOpenModal={() => setIsModalOpen(true)} />
         <SpeedAuditSection />
+        <PerformanceGaugesSection />
         <DesignConfiguratorSection />
+        <ScopeCalculatorSection onOpenModal={() => setIsModalOpen(true)} />
         <ComparisonSection />
         <ServicesSection />
         <PortfolioSection />
