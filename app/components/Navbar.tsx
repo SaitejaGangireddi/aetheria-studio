@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { Sparkles, ArrowRight, Menu, X } from "lucide-react";
 
 export default function Navbar({ onOpenModal }: { onOpenModal: () => void }) {
@@ -9,12 +10,17 @@ export default function Navbar({ onOpenModal }: { onOpenModal: () => void }) {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-6 md:px-12 py-4 bg-slate-950/80 backdrop-blur-xl border-b border-slate-800/80">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        {/* Brand Logo */}
-        <a href="#" className="flex items-center gap-2.5 group">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-purple-600 via-indigo-600 to-pink-500 p-[1.5px] shadow-[0_0_20px_rgba(168,85,247,0.4)]">
-            <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center font-bold text-white text-sm">
-              DP
-            </div>
+        {/* Custom Brand Logo */}
+        <a href="#" className="flex items-center gap-3 group">
+          <div className="relative w-10 h-10 rounded-xl overflow-hidden flex items-center justify-center">
+            <Image
+              src="https://res.cloudinary.com/dmkjnuolr/image/upload/v1785855698/ChatGPT_Image_Aug_4_2026_08_30_13_PM_obda5y.png"
+              alt="DesignerPal Logo"
+              width={40}
+              height={40}
+              className="object-contain transition-transform group-hover:scale-105"
+              priority
+            />
           </div>
           <span className="font-serif font-bold text-xl tracking-tight text-white group-hover:text-purple-300 transition-colors">
             Designer<span className="text-purple-400">Pal</span>
@@ -23,10 +29,18 @@ export default function Navbar({ onOpenModal }: { onOpenModal: () => void }) {
 
         {/* Desktop Nav Links */}
         <nav className="hidden md:flex items-center gap-8 text-xs font-semibold text-slate-300">
-          <a href="#why-us" className="hover:text-white transition-colors">Why Us</a>
-          <a href="#work" className="hover:text-white transition-colors">Work</a>
-          <a href="#services" className="hover:text-white transition-colors">Services</a>
-          <a href="#process" className="hover:text-white transition-colors">Process</a>
+          <a href="#why-us" className="hover:text-white transition-colors">
+            Why Us
+          </a>
+          <a href="#work" className="hover:text-white transition-colors">
+            Work
+          </a>
+          <a href="#services" className="hover:text-white transition-colors">
+            Services
+          </a>
+          <a href="#process" className="hover:text-white transition-colors">
+            Process
+          </a>
         </nav>
 
         {/* CTA Button */}
@@ -46,17 +60,29 @@ export default function Navbar({ onOpenModal }: { onOpenModal: () => void }) {
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           className="md:hidden text-slate-300 hover:text-white p-2"
         >
-          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {mobileMenuOpen ? (
+            <X className="w-6 h-6" />
+          ) : (
+            <Menu className="w-6 h-6" />
+          )}
         </button>
       </div>
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
         <div className="md:hidden pt-4 pb-6 border-t border-slate-800/80 mt-4 flex flex-col gap-4 text-sm font-semibold text-slate-200">
-          <a href="#why-us" onClick={() => setMobileMenuOpen(false)}>Why Us</a>
-          <a href="#work" onClick={() => setMobileMenuOpen(false)}>Work</a>
-          <a href="#services" onClick={() => setMobileMenuOpen(false)}>Services</a>
-          <a href="#process" onClick={() => setMobileMenuOpen(false)}>Process</a>
+          <a href="#why-us" onClick={() => setMobileMenuOpen(false)}>
+            Why Us
+          </a>
+          <a href="#work" onClick={() => setMobileMenuOpen(false)}>
+            Work
+          </a>
+          <a href="#services" onClick={() => setMobileMenuOpen(false)}>
+            Services
+          </a>
+          <a href="#process" onClick={() => setMobileMenuOpen(false)}>
+            Process
+          </a>
           <button
             onClick={() => {
               setMobileMenuOpen(false);
