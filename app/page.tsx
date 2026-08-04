@@ -8,13 +8,13 @@ import { Toaster } from "sonner";
 import Navbar from "./components/Navbar";
 import FloatingSocialDock from "./components/FloatingSocialDock";
 import HeroSection from "./components/HeroSection";
-import SpeedAuditSection from "./components/SpeedAuditSection";
 import PerformanceGaugesSection from "./components/PerformanceGaugesSection";
-import DesignConfiguratorSection from "./components/DesignConfiguratorSection";
+import WhyChooseUsSection from "./components/WhyChooseUsSection";
 import ScopeCalculatorSection from "./components/ScopeCalculatorSection";
-import ComparisonSection from "./components/ComparisonSection";
 import ServicesSection from "./components/ServicesSection";
 import PortfolioSection from "./components/PortfolioSection";
+import SpeedAuditSection from "./components/SpeedAuditSection";
+import ComparisonSection from "./components/ComparisonSection";
 import ProcessSection from "./components/ProcessSection";
 import ContactModal from "./components/ContactModal";
 import Footer from "./components/Footer";
@@ -46,13 +46,13 @@ export default function Page() {
 
       <main id="main-content">
         <HeroSection onOpenModal={() => setIsModalOpen(true)} />
-        <SpeedAuditSection />
         <PerformanceGaugesSection />
-        <DesignConfiguratorSection />
+        <WhyChooseUsSection onOpenModal={() => setIsModalOpen(true)} />
         <ScopeCalculatorSection onOpenModal={() => setIsModalOpen(true)} />
-        <ComparisonSection />
         <ServicesSection />
         <PortfolioSection />
+        <SpeedAuditSection />
+        <ComparisonSection />
         <ProcessSection />
       </main>
 
