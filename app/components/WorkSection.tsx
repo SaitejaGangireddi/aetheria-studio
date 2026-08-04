@@ -22,12 +22,7 @@ const projects: Project[] = [
       "100% custom Next.js showcase platform engineered with zero-shift floorplan lightboxes, sub-second response times, and high-converting brief request funnels.",
     lcp: "0.29s LCP",
     vitals: "100/100",
-    tags: [
-      "Next.js App Router",
-      "Tailwind CSS",
-      "Framer Motion",
-      "Vercel Edge",
-    ],
+    tags: ["Next.js App Router", "Tailwind CSS", "Framer Motion", "Vercel Edge"],
     imageUrl:
       "https://res.cloudinary.com/dmkjnuolr/image/upload/v1785856193/Screenshot_2026-08-04_203429_dmqlwu.png",
     liveUrl: "https://www.kathainteriors.in/",
@@ -51,12 +46,7 @@ const projects: Project[] = [
       "Ultra-high resolution portfolio platform optimized for zero layout shifts, smooth ambient dark mode transitions, and direct client consultation scheduling.",
     lcp: "0.34s LCP",
     vitals: "100/100",
-    tags: [
-      "Next.js",
-      "Server Components",
-      "Lucide Icons",
-      "Zero-Plugin Security",
-    ],
+    tags: ["Next.js", "Server Components", "Lucide Icons", "Zero-Plugin Security"],
     imageUrl:
       "https://res.cloudinary.com/dmkjnuolr/image/upload/v1785856192/Screenshot_2026-08-04_203803_ghhdrl.png",
     liveUrl: "https://mwc946-3000.csb.app/",
@@ -65,10 +55,7 @@ const projects: Project[] = [
 
 export default function WorkSection() {
   return (
-    <section
-      id="work"
-      className="py-24 px-6 md:px-12 max-w-7xl mx-auto relative z-10"
-    >
+    <section id="work" className="py-24 px-6 md:px-12 max-w-7xl mx-auto relative z-10">
       <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-950/80 border border-purple-800 text-purple-300 text-xs font-bold uppercase tracking-wider">
           <Zap className="w-3.5 h-3.5 text-amber-300" />
@@ -78,8 +65,7 @@ export default function WorkSection() {
           Featured Engineering Projects
         </h2>
         <p className="text-slate-400 text-sm">
-          Explore production platforms engineered for maximum client engagement
-          and sub-second speed SLAs.
+          Explore production platforms engineered for maximum client engagement and sub-second speed SLAs.
         </p>
       </div>
 
@@ -89,12 +75,12 @@ export default function WorkSection() {
             key={idx}
             className="group relative bg-slate-900/60 border border-slate-800/80 hover:border-purple-500/50 rounded-3xl overflow-hidden backdrop-blur-xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(168,85,247,0.15)]"
           >
-            {/* Top Preview Image Container with Hyperlink */}
+            {/* Top Preview Image Container */}
             <a
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="relative w-full h-52 bg-slate-950 overflow-hidden block border-b border-slate-800/80 group/img"
+              className="relative w-full h-52 bg-slate-950 overflow-hidden block border-b border-slate-800/80 group/img shrink-0"
             >
               <img
                 src={project.imageUrl}
@@ -107,7 +93,6 @@ export default function WorkSection() {
             {/* Content Body */}
             <div className="p-6 space-y-5 flex-1 flex flex-col justify-between">
               <div className="space-y-3">
-                {/* Metrics Badges */}
                 <div className="flex items-center justify-between">
                   <span className="px-2.5 py-1 rounded-full bg-purple-950/80 text-purple-300 border border-purple-800/80 text-[10px] font-mono font-bold">
                     {project.lcp}
@@ -118,7 +103,6 @@ export default function WorkSection() {
                   </span>
                 </div>
 
-                {/* Title & Category */}
                 <div>
                   <h3 className="text-xl font-serif font-bold text-white group-hover:text-purple-300 transition-colors">
                     {project.title}
@@ -128,12 +112,10 @@ export default function WorkSection() {
                   </p>
                 </div>
 
-                {/* Description */}
                 <p className="text-xs text-slate-300 leading-relaxed">
                   {project.description}
                 </p>
 
-                {/* Tech Tags */}
                 <div className="flex flex-wrap gap-1.5 pt-2">
                   {project.tags.map((tag, tIdx) => (
                     <span
@@ -146,7 +128,6 @@ export default function WorkSection() {
                 </div>
               </div>
 
-              {/* Action Button Link */}
               <div className="pt-4 border-t border-slate-800/80">
                 <a
                   href={project.liveUrl}

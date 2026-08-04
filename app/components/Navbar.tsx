@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { Sparkles, ArrowRight, Menu, X } from "lucide-react";
 import { LOGO_URL } from "../constants/brand";
 
@@ -11,7 +12,7 @@ export default function Navbar({ onOpenModal }: { onOpenModal: () => void }) {
     <header className="fixed top-0 left-0 right-0 z-50 px-6 md:px-12 py-4 bg-slate-950/80 backdrop-blur-xl border-b border-slate-800/80">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Custom Brand Logo */}
-        <a href="#" className="flex items-center gap-3 group">
+        <Link href="/" className="flex items-center gap-3 group">
           <div className="w-9 h-9 flex items-center justify-center shrink-0">
             <img
               src={LOGO_URL} 
@@ -22,14 +23,17 @@ export default function Navbar({ onOpenModal }: { onOpenModal: () => void }) {
           <span className="font-serif font-bold text-xl tracking-tight text-white group-hover:text-purple-300 transition-colors">
             Designer<span className="text-purple-400">Pal</span>
           </span>
-        </a>
+        </Link>
 
         {/* Desktop Nav Links */}
         <nav className="hidden md:flex items-center gap-8 text-xs font-semibold text-slate-300">
-          <a href="#why-us" className="hover:text-white transition-colors">Why Us</a>
-          <a href="#work" className="hover:text-white transition-colors">Work</a>
-          <a href="#services" className="hover:text-white transition-colors">Services</a>
-          <a href="#process" className="hover:text-white transition-colors">Process</a>
+          <Link href="/#why-us" className="hover:text-white transition-colors">Why Us</Link>
+          <Link href="/#work" className="hover:text-white transition-colors">Work</Link>
+          <Link href="/#services" className="hover:text-white transition-colors">Services</Link>
+          <Link href="/founders" className="text-purple-400 hover:text-purple-300 transition-colors flex items-center gap-1 font-bold">
+            <Sparkles className="w-3 h-3 text-amber-300" />
+            <span>Founder</span>
+          </Link>
         </nav>
 
         {/* CTA Button */}
@@ -56,10 +60,10 @@ export default function Navbar({ onOpenModal }: { onOpenModal: () => void }) {
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
         <div className="md:hidden pt-4 pb-6 border-t border-slate-800/80 mt-4 flex flex-col gap-4 text-sm font-semibold text-slate-200">
-          <a href="#why-us" onClick={() => setMobileMenuOpen(false)}>Why Us</a>
-          <a href="#work" onClick={() => setMobileMenuOpen(false)}>Work</a>
-          <a href="#services" onClick={() => setMobileMenuOpen(false)}>Services</a>
-          <a href="#process" onClick={() => setMobileMenuOpen(false)}>Process</a>
+          <Link href="/#why-us" onClick={() => setMobileMenuOpen(false)}>Why Us</Link>
+          <Link href="/#work" onClick={() => setMobileMenuOpen(false)}>Work</Link>
+          <Link href="/#services" onClick={() => setMobileMenuOpen(false)}>Services</Link>
+          <Link href="/founders" onClick={() => setMobileMenuOpen(false)} className="text-purple-400 font-bold">Founder</Link>
           <button
             onClick={() => {
               setMobileMenuOpen(false);
