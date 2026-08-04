@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Sparkles, ArrowRight, Zap, Layers, Box, Cpu, ShieldCheck, CheckCircle2 } from "lucide-react";
+import { Sparkles, ArrowRight, Box, ShieldCheck, CheckCircle2 } from "lucide-react";
 
 export default function HeroSection({ onOpenModal }: { onOpenModal: () => void }) {
   const [activeTab, setActiveTab] = useState<"ecommerce" | "agritech" | "architecture">("ecommerce");
@@ -39,8 +39,8 @@ export default function HeroSection({ onOpenModal }: { onOpenModal: () => void }
   return (
     <section className="relative pt-32 pb-20 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
       {/* Dynamic Background Glowing Mesh */}
-      <div className="absolute top-12 left-1/3 -translate-x-1/2 w-[500px] h-[500px] bg-purple-500/15 rounded-full blur-[130px] pointer-events-none animate-pulse" />
-      <div className="absolute top-36 right-10 w-[450px] h-[450px] bg-cyan-500/15 rounded-full blur-[110px] pointer-events-none" />
+      <div className="absolute top-12 left-1/3 -translate-x-1/2 w-[500px] h-[500px] bg-purple-600/20 rounded-full blur-[130px] pointer-events-none animate-pulse" />
+      <div className="absolute top-36 right-10 w-[450px] h-[450px] bg-indigo-600/20 rounded-full blur-[110px] pointer-events-none" />
 
       <div className="grid lg:grid-cols-12 gap-12 items-center relative z-10">
         
@@ -52,26 +52,26 @@ export default function HeroSection({ onOpenModal }: { onOpenModal: () => void }
           className="lg:col-span-6 space-y-7"
         >
           {/* Live Availability Badge */}
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/90 border border-slate-200 shadow-sm backdrop-blur-md">
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-slate-900/90 border border-slate-800 shadow-md backdrop-blur-md">
             <span className="relative flex h-2.5 w-2.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
             </span>
-            <span className="text-[11px] font-extrabold uppercase tracking-widest text-slate-800">
+            <span className="text-[11px] font-extrabold uppercase tracking-widest text-slate-200">
               Bespoke Web Architecture • Zero CMS
             </span>
           </div>
 
-          {/* Headline */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-slate-900 leading-[1.08] tracking-tight">
+          {/* Main Headline - Fixed Text Contrast (Pure White + Radiant Gradient) */}
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-white leading-[1.08] tracking-tight">
             We Engineer Next-Gen{" "}
-            <span className="bg-gradient-to-r from-purple-600 via-indigo-600 to-pink-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-amber-300 bg-clip-text text-transparent">
               3D & High-Converting
             </span>{" "}
             Digital Masterpieces.
           </h1>
 
-          <p className="text-slate-600 text-sm md:text-base max-w-lg leading-relaxed">
+          <p className="text-slate-300 text-sm md:text-base max-w-lg leading-relaxed font-normal">
             100% custom React and Next.js applications engineered with sub-second response times, 3D interactive canvases, and zero-plugin security.
           </p>
 
@@ -79,30 +79,30 @@ export default function HeroSection({ onOpenModal }: { onOpenModal: () => void }
           <div className="flex flex-wrap items-center gap-4 pt-2">
             <button
               onClick={onOpenModal}
-              className="px-7 py-4 bg-obsidian hover:bg-slate-800 text-white font-bold text-xs rounded-2xl shadow-2xl flex items-center gap-2.5 transition-all hover:scale-105 border border-champagne/30 group"
+              className="px-7 py-4 bg-gradient-to-r from-purple-600 via-indigo-600 to-purple-700 hover:from-purple-500 hover:to-indigo-500 text-white font-bold text-xs rounded-2xl shadow-2xl flex items-center gap-2.5 transition-all hover:scale-105 border border-purple-400/30 group"
             >
-              <Sparkles className="w-4 h-4 text-champagne group-hover:rotate-12 transition-transform" />
+              <Sparkles className="w-4 h-4 text-amber-300 group-hover:rotate-12 transition-transform" />
               <span>Request Proposal Brief</span>
-              <ArrowRight className="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4 text-slate-300 group-hover:translate-x-1 transition-transform" />
             </button>
 
             <a
               href="#portfolio"
-              className="px-6 py-4 bg-white hover:bg-slate-50 text-slate-800 font-bold text-xs rounded-2xl border border-slate-200 shadow-sm transition-all flex items-center gap-2"
+              className="px-6 py-4 bg-slate-900/80 hover:bg-slate-800 text-slate-200 font-bold text-xs rounded-2xl border border-slate-800 shadow-md transition-all flex items-center gap-2 backdrop-blur-md"
             >
-              <Box className="w-4 h-4 text-purple-600" />
+              <Box className="w-4 h-4 text-purple-400" />
               <span>Explore Live 3D Canvas</span>
             </a>
           </div>
 
           {/* Feature Badges */}
           <div className="flex flex-wrap gap-3 pt-2">
-            <span className="text-xs font-bold px-3.5 py-1.5 rounded-full bg-emerald-50 text-emerald-900 border border-emerald-200 flex items-center gap-1.5">
-              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+            <span className="text-xs font-bold px-3.5 py-1.5 rounded-full bg-emerald-950/80 text-emerald-300 border border-emerald-800 flex items-center gap-1.5">
+              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
               100/100 Core Web Vitals
             </span>
-            <span className="text-xs font-bold px-3.5 py-1.5 rounded-full bg-slate-50 text-slate-700 border border-slate-200 flex items-center gap-1.5">
-              <ShieldCheck className="w-3.5 h-3.5 text-slate-500" />
+            <span className="text-xs font-bold px-3.5 py-1.5 rounded-full bg-slate-900/80 text-slate-300 border border-slate-800 flex items-center gap-1.5">
+              <ShieldCheck className="w-3.5 h-3.5 text-slate-400" />
               Zero-Plugin Security
             </span>
           </div>
@@ -115,7 +115,7 @@ export default function HeroSection({ onOpenModal }: { onOpenModal: () => void }
           transition={{ duration: 0.7, delay: 0.1 }}
           className="lg:col-span-6 relative"
         >
-          {/* Interactive Mode Switcher Tabs */}
+          {/* Mode Switcher Tabs */}
           <div className="flex justify-center gap-2 mb-4 bg-slate-900/90 p-1.5 rounded-2xl border border-slate-800 backdrop-blur-md max-w-md mx-auto">
             <button
               onClick={() => setActiveTab("ecommerce")}
@@ -150,19 +150,17 @@ export default function HeroSection({ onOpenModal }: { onOpenModal: () => void }
           </div>
 
           {/* 3D Glassmorphic Canvas Card */}
-          <div className="bg-slate-950 border border-slate-800 rounded-[2.5rem] p-6 shadow-2xl relative overflow-hidden group">
-            {/* Ambient Animated Orb Inside Stage */}
+          <div className="bg-slate-950/90 border border-slate-800 rounded-[2.5rem] p-6 shadow-2xl relative overflow-hidden group">
             <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full blur-3xl opacity-40 bg-gradient-to-tr ${current.gradient} animate-pulse pointer-events-none`}/>
 
-            {/* Fake Chrome Browser Top Bar */}
+            {/* Fake Chrome Top Bar */}
             <div className="bg-slate-900/80 border border-slate-800 px-4 py-2.5 rounded-2xl flex items-center justify-between mb-6 backdrop-blur-sm">
               <div className="flex items-center gap-1.5">
                 <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
                 <div className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
                 <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
               </div>
-              <div className="bg-slate-950 text-[10px] text-slate-400 font-mono px-3 py-1 rounded-lg border border-slate-800 flex items-center gap-1.5">
-                <Cpu className="w-3 h-3 text-purple-400" />
+              <div className="bg-slate-950 text-[10px] text-slate-300 font-mono px-3 py-1 rounded-lg border border-slate-800 flex items-center gap-1.5">
                 <span>aetheria-edge://3d-stage.live</span>
               </div>
               <span className="text-[9px] font-mono font-bold text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-800">
@@ -170,10 +168,8 @@ export default function HeroSection({ onOpenModal }: { onOpenModal: () => void }
               </span>
             </div>
 
-            {/* Main Interactive Stage Body */}
+            {/* Stage Body */}
             <div className="relative min-h-[280px] rounded-2xl border border-slate-800 bg-slate-900/50 p-6 flex flex-col justify-between overflow-hidden">
-              
-              {/* Central Floating 3D Graphic Mesh Simulation */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                 <div className={`w-44 h-44 rounded-full bg-gradient-to-tr ${current.gradient} opacity-20 blur-xl animate-spin-slow`}/>
                 <div className="w-32 h-32 rounded-3xl border-2 border-white/10 bg-white/5 backdrop-blur-md transform rotate-12 flex items-center justify-center shadow-2xl">
@@ -181,35 +177,33 @@ export default function HeroSection({ onOpenModal }: { onOpenModal: () => void }
                 </div>
               </div>
 
-              {/* Top Banner Tag */}
               <div className="relative z-10 flex justify-between items-start">
                 <span className={`text-[10px] font-extrabold uppercase tracking-widest px-3 py-1 rounded-full border text-white ${current.accentBg} ${current.accentBorder}`}>
                   {current.tag}
                 </span>
-                <span className="text-xs font-mono text-slate-400 bg-slate-950/80 px-2.5 py-1 rounded-md border border-slate-800">
+                <span className="text-xs font-mono text-slate-300 bg-slate-950/80 px-2.5 py-1 rounded-md border border-slate-800">
                   Core Web Vitals: 100/100
                 </span>
               </div>
 
-              {/* Bottom Stage Details */}
               <div className="relative z-10 pt-16">
                 <h4 className="text-xl font-serif font-bold text-white mb-1">
                   {current.title}
                 </h4>
-                <p className="text-xs text-slate-400 max-w-xs">
+                <p className="text-xs text-slate-300 max-w-xs">
                   {current.subtitle}
                 </p>
               </div>
             </div>
 
-            {/* Floating Live Telemetry Badges */}
+            {/* Live Telemetry Pill */}
             <div className="absolute bottom-4 right-4 bg-slate-900/90 border border-slate-700/80 p-3 rounded-2xl shadow-2xl backdrop-blur-md flex items-center gap-3">
-              <div className="w-8 h-8 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold text-xs">
+              <div className="w-8 h-8 rounded-xl bg-purple-500/20 text-purple-300 flex items-center justify-center font-bold text-xs">
                 3D
               </div>
               <div>
                 <span className="block text-[10px] font-extrabold text-white uppercase tracking-wider">WebGPU Enabled</span>
-                <span className="block text-[9px] text-slate-400">60 FPS Smooth Rendering</span>
+                <span className="block text-[9px] text-slate-300">60 FPS Smooth Rendering</span>
               </div>
             </div>
 
