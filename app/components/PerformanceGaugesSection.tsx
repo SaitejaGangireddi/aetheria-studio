@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { CheckCircle2, Zap, ShieldCheck, Gauge, Award } from "lucide-react";
+import { CheckCircle2, Gauge, Award } from "lucide-react";
 
 export default function PerformanceGaugesSection() {
   const metrics = [
@@ -12,43 +12,41 @@ export default function PerformanceGaugesSection() {
   ];
 
   return (
-    <section className="py-6 px-6 max-w-6xl mx-auto">
-      <div className="bg-slate-950 border border-slate-800 rounded-3xl p-4 md:p-6 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden">
-        {/* Glow Accent */}
-        <div className="absolute top-0 right-0 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
-
-        {/* Title Badge Left */}
-        <div className="flex items-center gap-3 shrink-0">
-          <div className="w-10 h-10 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
-            <Gauge className="w-5 h-5" />
+    <section className="py-8 px-6 md:px-12 max-w-7xl mx-auto">
+      <div className="bg-gradient-to-r from-purple-50/60 via-amber-50/40 to-emerald-50/60 border border-purple-100/80 rounded-[2.5rem] p-6 md:p-8 shadow-bento flex flex-col lg:flex-row items-center justify-between gap-6 relative overflow-hidden backdrop-blur-md">
+        
+        {/* Title Left */}
+        <div className="flex items-center gap-4 shrink-0">
+          <div className="w-12 h-12 rounded-2xl bg-white border border-purple-200 shadow-sm flex items-center justify-center text-purple-600">
+            <Gauge className="w-6 h-6" />
           </div>
           <div>
-            <span className="text-[10px] font-extrabold uppercase tracking-widest text-emerald-400 block">
-              100/100 Core Web Vitals Standard
+            <span className="text-[10px] font-extrabold uppercase tracking-widest text-purple-900 bg-purple-100/80 px-3 py-1 rounded-full border border-purple-200 inline-block mb-1">
+              Verified Benchmark SLA
             </span>
-            <span className="text-xs text-slate-400 font-medium">Verified Lighthouse Benchmark SLA</span>
+            <h4 className="text-base font-serif font-bold text-slate-900">100/100 Core Web Vitals Standard</h4>
           </div>
         </div>
 
-        {/* Metric Badges Center */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 w-full max-w-2xl">
+        {/* Metrics Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 w-full max-w-3xl">
           {metrics.map((m, idx) => (
-            <div key={idx} className="bg-slate-900/80 border border-slate-800 rounded-2xl p-3 text-center flex items-center justify-between">
-              <div>
-                <span className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider">{m.label}</span>
-                <span className="text-xs text-emerald-400 font-bold flex items-center gap-1 mt-0.5">
-                  <CheckCircle2 className="w-3 h-3" /> Verified
+            <div key={idx} className="bg-white/90 border border-slate-200/80 rounded-2xl p-3.5 text-center flex items-center justify-between shadow-sm">
+              <div className="text-left">
+                <span className="block text-[9px] font-extrabold text-slate-500 uppercase tracking-wider">{m.label}</span>
+                <span className="text-xs text-emerald-700 font-bold flex items-center gap-1 mt-0.5">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" /> Verified
                 </span>
               </div>
-              <span className="text-xl font-mono font-black text-emerald-400">{m.score}</span>
+              <span className="text-xl font-mono font-black text-slate-900">{m.score}</span>
             </div>
           ))}
         </div>
 
-        {/* SLA Guarantee Right */}
-        <div className="hidden lg:flex items-center gap-2 text-xs font-bold text-slate-300 bg-slate-900/90 px-3.5 py-2 rounded-2xl border border-slate-800">
-          <Award className="w-4 h-4 text-amber-400" />
-          <span>Speed SLA Guaranteed</span>
+        {/* Guarantee Badge */}
+        <div className="hidden xl:flex items-center gap-2 text-xs font-bold text-slate-800 bg-white px-4 py-3 rounded-2xl border border-slate-200 shadow-sm">
+          <Award className="w-4 h-4 text-amber-600" />
+          <span>Sub-Second SLA</span>
         </div>
       </div>
     </section>
