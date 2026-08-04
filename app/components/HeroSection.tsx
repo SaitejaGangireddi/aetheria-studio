@@ -2,19 +2,17 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Sparkles, ArrowRight, ShieldCheck, CheckCircle2, Layout, Zap, Lock } from "lucide-react";
+import { Sparkles, ArrowRight, ShieldCheck, CheckCircle2, Layout } from "lucide-react";
 
 export default function HeroSection({ onOpenModal }: { onOpenModal: () => void }) {
   return (
-    <section className="relative pt-32 pb-24 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
-      {/* Background Ambient Mesh Orbs */}
-      <div className="absolute top-10 left-1/4 -translate-x-1/2 w-[700px] h-[700px] bg-purple-600/30 rounded-full blur-[170px] pointer-events-none animate-pulse" />
-      <div className="absolute top-36 right-10 w-[600px] h-[600px] bg-indigo-600/25 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-10 right-1/3 w-[500px] h-[500px] bg-pink-600/20 rounded-full blur-[160px] pointer-events-none" />
+    <section className="relative pt-32 pb-20 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
+      {/* Background Radial Glow */}
+      <div className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-purple-600/20 rounded-full blur-[160px] pointer-events-none" />
 
-      <div className="grid lg:grid-cols-12 gap-12 items-center relative z-10">
+      <div className="grid lg:grid-cols-12 gap-8 items-center relative z-10">
         
-        {/* LEFT COLUMN: Agency Pitch & High-Contrast Headline */}
+        {/* LEFT COLUMN: Agency Headline & Content */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -32,7 +30,7 @@ export default function HeroSection({ onOpenModal }: { onOpenModal: () => void }
             </span>
           </div>
 
-          {/* Main Headline */}
+          {/* Headline */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-white leading-[1.08] tracking-tight">
             We Engineer Next-Gen{" "}
             <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-amber-300 bg-clip-text text-transparent">
@@ -78,65 +76,23 @@ export default function HeroSection({ onOpenModal }: { onOpenModal: () => void }
           </div>
         </motion.div>
 
-        {/* RIGHT COLUMN: Real 3D Globe Platform Scene with Floating Badges */}
+        {/* RIGHT COLUMN: Exact 3D Globe Scene Asset */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, delay: 0.1 }}
           className="lg:col-span-6 relative flex justify-center items-center"
         >
-          {/* Main 3D Visual Stage Container */}
-          <div className="relative w-full max-w-[550px] h-[480px] flex items-center justify-center">
-            
-            {/* Background Volumetric Light Glow */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-purple-600/40 via-pink-500/25 to-indigo-600/40 rounded-[3rem] blur-3xl pointer-events-none" />
+          <div className="relative w-full max-w-[600px] flex items-center justify-center">
+            {/* Ambient Background Glow */}
+            <div className="absolute inset-0 bg-purple-600/30 rounded-full blur-3xl pointer-events-none" />
 
-            {/* Central High-Resolution 3D Globe Visual */}
-            <div className="relative z-10 w-full h-full flex items-center justify-center">
-              <img
-                src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop"
-                alt="3D Futuristic Network Globe"
-                className="w-[85%] h-[85%] object-cover rounded-[3rem] shadow-[0_0_90px_rgba(168,85,247,0.4)] border border-purple-500/40 transform -rotate-2 hover:rotate-0 transition-transform duration-700"
-              />
-            </div>
-
-            {/* FLOATING BADGE 1: Top Right Edge Deployed Pill */}
-            <div className="absolute top-4 right-2 z-20 bg-slate-950/90 border border-purple-500/50 px-4 py-3 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.8)] backdrop-blur-xl flex items-center gap-3 animate-pulse">
-              <div className="w-8 h-8 rounded-xl bg-purple-600/30 border border-purple-400/50 flex items-center justify-center text-purple-300">
-                <Zap className="w-4 h-4 text-purple-300" />
-              </div>
-              <div>
-                <span className="block text-[10px] font-extrabold uppercase text-slate-400">Edge Deployed</span>
-                <span className="block text-xs font-mono font-bold text-emerald-400">99.99% SLA Uptime</span>
-              </div>
-            </div>
-
-            {/* FLOATING BADGE 2: Top Left Next.js Architecture */}
-            <div className="absolute top-12 left-0 z-20 bg-slate-950/90 border border-indigo-500/40 px-4 py-3 rounded-2xl shadow-2xl backdrop-blur-xl flex items-center gap-3">
-              <div className="w-8 h-8 rounded-xl bg-indigo-600/30 border border-indigo-400/50 flex items-center justify-center font-mono text-xs text-indigo-300 font-bold">
-                ⚡
-              </div>
-              <div>
-                <span className="block text-[10px] font-extrabold uppercase text-slate-400">Framework</span>
-                <span className="block text-xs font-bold text-white">Next.js App Router</span>
-              </div>
-            </div>
-
-            {/* FLOATING BADGE 3: Bottom Left Performance Metric */}
-            <div className="absolute bottom-10 left-2 z-20 bg-slate-950/90 border border-emerald-500/40 p-3.5 rounded-2xl shadow-2xl backdrop-blur-xl">
-              <span className="text-[9px] font-extrabold uppercase text-slate-400 block mb-1">Performance</span>
-              <span className="text-xs font-mono font-bold text-emerald-400 block">100 / 100 Core Web Vitals</span>
-            </div>
-
-            {/* FLOATING BADGE 4: Bottom Right Security Shield */}
-            <div className="absolute bottom-6 right-2 z-20 bg-slate-950/90 border border-pink-500/40 px-4 py-3 rounded-2xl shadow-2xl backdrop-blur-xl flex items-center gap-2.5">
-              <Lock className="w-4 h-4 text-pink-400" />
-              <div>
-                <span className="block text-[10px] font-extrabold uppercase text-slate-400">Security</span>
-                <span className="block text-xs font-bold text-white">Zero-Plugin Protected</span>
-              </div>
-            </div>
-
+            {/* Direct Render of the 3D Globe Tech Stage Artwork */}
+            <img
+              src="/hero-3d-globe.jpg"
+              alt="Cyberpunk 3D Globe Edge Architecture Platform"
+              className="w-full h-auto object-contain rounded-3xl shadow-[0_0_80px_rgba(168,85,247,0.3)] relative z-10 hover:scale-[1.02] transition-transform duration-500"
+            />
           </div>
         </motion.div>
 
