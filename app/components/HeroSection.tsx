@@ -1,52 +1,44 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
-import { Sparkles, ArrowRight, ShieldCheck, CheckCircle2, Layout, MapPin, Zap, Lock, Code2 } from "lucide-react";
+import { Sparkles, ArrowRight, ShieldCheck, Zap, Code2, Globe } from "lucide-react";
 
 export default function HeroSection({ onOpenModal }: { onOpenModal: () => void }) {
   return (
-    <section className="relative pt-32 pb-24 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
-      {/* Ambient Background Glows */}
-      <div className="absolute top-10 left-1/4 -translate-x-1/2 w-[700px] h-[700px] bg-purple-600/30 rounded-full blur-[170px] pointer-events-none animate-pulse" />
-      <div className="absolute top-36 right-10 w-[600px] h-[600px] bg-indigo-600/25 rounded-full blur-[150px] pointer-events-none" />
+    <section className="relative pt-12 pb-20 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
+      
+      {/* Soft & Clean Subtle Background Glows */}
+      <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-purple-950/30 blur-[120px] rounded-full" />
+      </div>
 
-      <div className="grid lg:grid-cols-12 gap-12 items-center relative z-10">
+      <div className="grid lg:grid-cols-12 gap-12 items-center">
         
-        {/* LEFT COLUMN: Value-First Copy */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="lg:col-span-6 space-y-7"
-        >
-          {/* Location Badge */}
-          <div className="flex flex-wrap items-center gap-2.5">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/90 border border-slate-800 shadow-md backdrop-blur-md">
-              <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-              </span>
-              <span className="text-[11px] font-extrabold uppercase tracking-widest text-slate-200">
-                DesignerPal Studio
-              </span>
-            </div>
-
-            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-purple-950/80 border border-purple-800 text-[11px] font-bold text-purple-300">
-              <MapPin className="w-3 h-3 text-purple-400" />
-              <span>Hyderabad, India</span>
-            </div>
+        {/* Left Column Text & CTAs */}
+        <div className="lg:col-span-7 space-y-8">
+          
+          {/* Location & Brand Badges */}
+          <div className="flex flex-wrap items-center gap-3">
+            <span className="px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-emerald-400 text-xs font-mono font-bold flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              DESIGNERPAL STUDIO
+            </span>
+            <span className="px-3 py-1 rounded-full bg-purple-950/60 border border-purple-800/80 text-purple-300 text-xs font-mono font-bold flex items-center gap-1.5">
+              <Globe className="w-3.5 h-3.5 text-purple-400" />
+              Hyderabad, India
+            </span>
           </div>
 
-          {/* Authentic, Value-Focused Headline */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-white leading-[1.08] tracking-tight">
+          {/* Heading */}
+          <h1 className="text-4xl sm:text-6xl font-serif font-extrabold tracking-tight text-white leading-[1.1]">
             High-Converting Web Applications &{" "}
-            <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-amber-300 bg-clip-text text-transparent">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-indigo-300 to-amber-300">
               Digital Engineering.
             </span>
           </h1>
 
-          <p className="text-slate-300 text-sm md:text-base max-w-lg leading-relaxed">
+          {/* Subheading */}
+          <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl">
             We build custom Next.js platforms, zero-plugin web architecture, and sub-second edge experiences designed to grow your business—engineered locally in Hyderabad for global scale.
           </p>
 
@@ -54,96 +46,60 @@ export default function HeroSection({ onOpenModal }: { onOpenModal: () => void }
           <div className="flex flex-wrap items-center gap-4 pt-2">
             <button
               onClick={onOpenModal}
-              className="px-8 py-4 bg-gradient-to-r from-purple-600 via-indigo-600 to-purple-700 hover:from-purple-500 hover:to-indigo-500 text-white font-bold text-xs rounded-2xl shadow-[0_0_30px_rgba(168,85,247,0.4)] flex items-center gap-2.5 transition-all hover:scale-105 border border-purple-400/30 group"
+              className="px-6 py-3.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold text-xs rounded-xl shadow-[0_0_25px_rgba(168,85,247,0.3)] flex items-center gap-2.5 transition-all hover:scale-105 border border-purple-400/30"
             >
-              <Sparkles className="w-4 h-4 text-amber-300 group-hover:rotate-12 transition-transform" />
+              <Sparkles className="w-4 h-4 text-amber-300" />
               <span>Start Project Brief</span>
-              <ArrowRight className="w-4 h-4 text-slate-200 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4" />
             </button>
 
             <a
               href="#work"
-              className="px-6 py-4 bg-slate-900/80 hover:bg-slate-800 text-slate-200 font-bold text-xs rounded-2xl border border-slate-800 shadow-md transition-all flex items-center gap-2 backdrop-blur-md"
+              className="px-6 py-3.5 bg-slate-900 hover:bg-slate-800 text-slate-200 font-bold text-xs rounded-xl border border-slate-800 transition-all flex items-center gap-2"
             >
-              <Layout className="w-4 h-4 text-purple-400" />
               <span>See Featured Work</span>
             </a>
           </div>
 
-          {/* Verified Technical Badges */}
-          <div className="flex flex-wrap gap-3 pt-2">
-            <span className="text-xs font-bold px-3.5 py-1.5 rounded-full bg-emerald-950/80 text-emerald-300 border border-emerald-800 flex items-center gap-1.5">
-              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-              100/100 Core Web Vitals
-            </span>
-            <span className="text-xs font-bold px-3.5 py-1.5 rounded-full bg-slate-900/80 text-slate-300 border border-slate-800 flex items-center gap-1.5">
-              <ShieldCheck className="w-3.5 h-3.5 text-slate-400" />
-              Sub-Second Edge Speeds
-            </span>
+          {/* Trust Badges */}
+          <div className="pt-6 border-t border-slate-800/80 grid grid-cols-2 sm:grid-cols-3 gap-4 text-xs">
+            <div className="flex items-center gap-2 text-slate-400">
+              <Zap className="w-4 h-4 text-amber-400 shrink-0" />
+              <span>0.29s LCP SLA</span>
+            </div>
+            <div className="flex items-center gap-2 text-slate-400">
+              <ShieldCheck className="w-4 h-4 text-purple-400 shrink-0" />
+              <span>Zero-Plugin Core</span>
+            </div>
+            <div className="flex items-center gap-2 text-slate-400">
+              <Code2 className="w-4 h-4 text-indigo-400 shrink-0" />
+              <span>Next.js App Router</span>
+            </div>
           </div>
-        </motion.div>
 
-        {/* RIGHT COLUMN: 3D Stage Visual */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, delay: 0.1 }}
-          className="lg:col-span-6 relative flex justify-center items-center"
-        >
-          <div className="relative w-full max-w-[550px] h-[480px] flex items-center justify-center">
-            
-            {/* Stage Base */}
-            <div className="absolute bottom-6 w-[360px] h-[160px] bg-gradient-to-tr from-purple-900/80 via-slate-950 to-indigo-950 border-2 border-purple-500/60 rounded-[3rem] shadow-[0_0_80px_rgba(168,85,247,0.5)] transform -rotate-12 backdrop-blur-xl flex flex-col items-center justify-center">
-              
-              <div className="absolute w-[320px] h-[320px] rounded-full border border-purple-400/50 animate-[spin_16s_linear_infinite] pointer-events-none" />
-              <div className="absolute w-[260px] h-[260px] rounded-full border-2 border-dashed border-pink-400/50 animate-[spin_10s_linear_infinite_reverse] pointer-events-none" />
+        </div>
 
-              <div className="w-32 h-32 rounded-full bg-gradient-to-tr from-purple-600 via-pink-500 to-amber-300 p-[2px] shadow-[0_0_50px_rgba(236,72,153,0.6)] animate-bounce flex items-center justify-center">
-                <div className="w-full h-full bg-slate-950 rounded-full flex flex-col items-center justify-center">
-                  <Sparkles className="w-6 h-6 text-amber-300 mb-0.5" />
-                  <span className="font-serif font-bold text-sm tracking-tight text-white">
-                    Designer<span className="text-purple-400">Pal</span>
-                  </span>
-                </div>
-              </div>
-
+        {/* Right Interactive Card Preview */}
+        <div className="lg:col-span-5 relative">
+          <div className="p-8 rounded-3xl bg-slate-900/80 border border-slate-800 shadow-2xl backdrop-blur-xl relative space-y-6">
+            <div className="w-12 h-12 rounded-2xl bg-purple-950/80 border border-purple-800/80 flex items-center justify-center text-purple-300 font-bold">
+              <Code2 className="w-6 h-6 text-purple-400" />
             </div>
 
-            {/* Badge 1 */}
-            <div className="absolute top-8 right-0 z-20 bg-slate-950/90 border border-purple-500/50 px-4 py-3 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.8)] backdrop-blur-xl flex items-center gap-3 animate-pulse">
-              <div className="w-8 h-8 rounded-xl bg-purple-600/30 border border-purple-400/50 flex items-center justify-center text-purple-300">
-                <Zap className="w-4 h-4 text-purple-300" />
-              </div>
-              <div>
-                <span className="block text-[10px] font-extrabold uppercase text-slate-400">Edge Deployed</span>
-                <span className="block text-xs font-mono font-bold text-emerald-400">0.29s LCP Performance</span>
-              </div>
+            <div>
+              <div className="text-xs font-mono text-purple-400">ARCHITECTURE</div>
+              <h3 className="text-xl font-bold text-white mt-1">High-Performance Core</h3>
+              <p className="text-xs text-slate-400 mt-2 leading-relaxed">
+                Clean TypeScript implementation with zero layout shifts and optimized edge distribution.
+              </p>
             </div>
 
-            {/* Badge 2 */}
-            <div className="absolute top-16 left-0 z-20 bg-slate-950/90 border border-indigo-500/40 px-4 py-3 rounded-2xl shadow-2xl backdrop-blur-xl flex items-center gap-3">
-              <div className="w-8 h-8 rounded-xl bg-indigo-600/30 border border-indigo-400/50 flex items-center justify-center text-indigo-300">
-                <Code2 className="w-4 h-4 text-indigo-300" />
-              </div>
-              <div>
-                <span className="block text-[10px] font-extrabold uppercase text-slate-400">Architecture</span>
-                <span className="block text-xs font-bold text-white">Next.js App Router</span>
-              </div>
+            <div className="p-4 rounded-xl bg-slate-950 border border-slate-800/80 flex items-center justify-between text-xs font-mono">
+              <span className="text-slate-400">Target Core Vitals</span>
+              <span className="text-emerald-400 font-bold">100 / 100</span>
             </div>
-
-            {/* Badge 3 */}
-            <div className="absolute bottom-4 right-2 z-20 bg-slate-950/90 border border-pink-500/40 px-4 py-3 rounded-2xl shadow-2xl backdrop-blur-xl flex items-center gap-3">
-              <div className="w-8 h-8 rounded-xl bg-pink-600/30 border border-pink-400/50 flex items-center justify-center text-pink-300">
-                <Lock className="w-4 h-4 text-pink-300" />
-              </div>
-              <div>
-                <span className="block text-[10px] font-extrabold uppercase text-slate-400">Security</span>
-                <span className="block text-xs font-bold text-white">Zero-Plugin Protected</span>
-              </div>
-            </div>
-
           </div>
-        </motion.div>
+        </div>
 
       </div>
     </section>

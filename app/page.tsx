@@ -5,6 +5,7 @@ import Navbar from "@/app/components/Navbar";
 import HeroSection from "@/app/components/HeroSection";
 import WhyUsSection from "@/app/components/WhyUsSection";
 import WorkSection from "@/app/components/WorkSection";
+import FounderSection from "@/app/components/FounderSection";
 import ServicesSection from "@/app/components/ServicesSection";
 import ProcessSection from "@/app/components/ProcessSection";
 import Footer from "@/app/components/Footer";
@@ -21,6 +22,7 @@ export default function Home() {
         <HeroSection onOpenModal={() => setIsModalOpen(true)} />
         <WhyUsSection />
         <WorkSection />
+        <FounderSection onOpenModal={() => setIsModalOpen(true)} />
         <ServicesSection />
         <ProcessSection />
       </main>
