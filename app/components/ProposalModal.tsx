@@ -1,7 +1,13 @@
 "use client";
 
 import React, { useState } from "react";
-import { X, Sparkles, Send, CheckCircle2, Loader2 } from "lucide-react";
+import { X, Sparkles, Send, CheckCircle2, Loader2, AlertCircle } from "lucide-react";
+import emailjs from "@emailjs/browser";
+
+// --- SECONDARY EMAILJS CREDENTIALS ---
+const SERVICE_ID = "service_hvyq506";
+const TEMPLATE_ID = "template_jgxh0lt";
+const PUBLIC_KEY = "KiNR_lemkHKZP5aU5";
 
 export default function ProposalModal({
   isOpen,
@@ -15,36 +21,39 @@ export default function ProposalModal({
   const [scope, setScope] = useState("");
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
   if (!isOpen) return null;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    setErrorMsg("");
+
+    const templateParams = {
+      from_name: name,
+      from_email: email,
+      message: scope,
+      to_name: "DesignerPal Studio",
+    };
 
     try {
-      // 1. Send via Backend API Endpoint
-      const res = await fetch("/api/proposal", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, scope }),
-      });
+      const response = await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        templateParams,
+        PUBLIC_KEY
+      );
 
-      if (!res.ok) {
-        throw new Error("API dispatch failed");
+      if (response.status === 200) {
+        setSubmitted(true);
+      } else {
+        throw new Error(`EmailJS responded with status ${response.status}`);
       }
-
-      setSubmitted(true);
-    } catch (err) {
-      // 2. Direct Mailto Fallback to guarantee email dispatch
-      const mailtoUrl = `mailto:saiteja.gangireddi@gmail.com?subject=${encodeURIComponent(
-        `Project Brief from ${name}`
-      )}&body=${encodeURIComponent(
-        `Name: ${name}\nEmail: ${email}\n\nProject Scope:\n${scope}`
-      )}`;
-      
-      window.location.href = mailtoUrl;
-      setSubmitted(true);
+    } catch (err: any) {
+      console.error("EmailJS Error:", err);
+      const text = err?.text || err?.message || "Failed to dispatch email brief";
+      setErrorMsg(`Dispatch Error: ${text}`);
     } finally {
       setLoading(false);
     }
@@ -54,6 +63,7 @@ export default function ProposalModal({
     setName("");
     setEmail("");
     setScope("");
+    setErrorMsg("");
     setSubmitted(false);
     onClose();
   };
@@ -74,10 +84,10 @@ export default function ProposalModal({
               <CheckCircle2 className="w-6 h-6" />
             </div>
             <h3 className="text-2xl font-serif font-bold text-white">
-              Brief Received!
+              Brief Dispatched!
             </h3>
             <p className="text-xs text-slate-300 max-w-sm mx-auto leading-relaxed">
-              Thank you, <span className="font-semibold text-purple-300">{name}</span>. Our lead engineer will review your scope and get back to you at <span className="font-semibold text-purple-300">{email}</span> within 24 hours.
+              Thank you, <span className="font-semibold text-purple-300">{name}</span>. Your brief has been sent directly to our inbox. We will review your scope and reply to <span className="font-semibold text-purple-300">{email}</span> within 24 hours.
             </p>
             <button
               onClick={handleReset}
@@ -137,6 +147,13 @@ export default function ProposalModal({
                   className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-purple-500 transition-colors"
                 />
               </div>
+
+              {errorMsg && (
+                <div className="p-3 rounded-xl bg-rose-950/80 border border-rose-500/50 text-rose-300 text-xs flex items-center gap-2">
+                  <AlertCircle className="w-4 h-4 shrink-0 text-rose-400" />
+                  <span>{errorMsg}</span>
+                </div>
+              )}
 
               <button
                 type="submit"
