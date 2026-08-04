@@ -2,7 +2,7 @@
 
 import React from "react";
 import SpotlightCard from "./SpotlightCard";
-import { ExternalLink, Sparkles, CheckCircle2, ArrowUpRight } from "lucide-react";
+import { Sparkles, CheckCircle2, ArrowUpRight } from "lucide-react";
 
 export default function PortfolioSection() {
   const projects = [
@@ -46,7 +46,6 @@ export default function PortfolioSection() {
 
   return (
     <section id="work" className="py-24 px-6 md:px-12 max-w-7xl mx-auto relative z-10">
-      {/* Section Header */}
       <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-xs font-bold text-purple-400">
           <Sparkles className="w-3.5 h-3.5 text-amber-300" />
@@ -60,11 +59,9 @@ export default function PortfolioSection() {
         </p>
       </div>
 
-      {/* Grid of Projects with Spotlight Effects */}
       <div className="grid md:grid-cols-3 gap-8">
         {projects.map((project, idx) => (
           <SpotlightCard key={idx} className={`flex flex-col justify-between ${project.accentBorder}`}>
-            {/* Top Badge & SLA */}
             <div>
               <div className="flex items-center justify-between mb-4">
                 <span className={`text-[10px] font-extrabold uppercase tracking-widest px-3 py-1 rounded-full border ${project.badgeColor}`}>
@@ -76,7 +73,6 @@ export default function PortfolioSection() {
                 </span>
               </div>
 
-              {/* Title & Category */}
               <h3 className="text-2xl font-serif font-bold text-white mb-1 group-hover:text-purple-300 transition-colors">
                 {project.title}
               </h3>
@@ -84,13 +80,11 @@ export default function PortfolioSection() {
                 {project.category}
               </p>
 
-              {/* Description */}
               <p className="text-slate-300 text-xs leading-relaxed mb-6">
                 {project.description}
               </p>
             </div>
 
-            {/* Bottom Tech Tags & Launch Button */}
             <div>
               <div className="flex flex-wrap gap-1.5 mb-6 pt-4 border-t border-slate-800/80">
                 {project.tags.map((tag, tIdx) => (
