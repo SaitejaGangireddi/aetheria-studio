@@ -2,26 +2,26 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Sparkles, ArrowRight, ShieldCheck, CheckCircle2, Layout, Zap } from "lucide-react";
+import { Sparkles, ArrowRight, ShieldCheck, CheckCircle2, Layout, Zap, Lock } from "lucide-react";
 
 export default function HeroSection({ onOpenModal }: { onOpenModal: () => void }) {
   return (
     <section className="relative pt-32 pb-24 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
-      {/* Dynamic Background Neon Radial Orbs */}
-      <div className="absolute top-10 left-1/4 -translate-x-1/2 w-[700px] h-[700px] bg-purple-600/25 rounded-full blur-[170px] pointer-events-none animate-pulse" />
-      <div className="absolute top-36 right-10 w-[600px] h-[600px] bg-indigo-600/20 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-10 right-1/3 w-[500px] h-[500px] bg-pink-600/15 rounded-full blur-[160px] pointer-events-none" />
+      {/* Background Ambient Mesh Orbs */}
+      <div className="absolute top-10 left-1/4 -translate-x-1/2 w-[700px] h-[700px] bg-purple-600/30 rounded-full blur-[170px] pointer-events-none animate-pulse" />
+      <div className="absolute top-36 right-10 w-[600px] h-[600px] bg-indigo-600/25 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-10 right-1/3 w-[500px] h-[500px] bg-pink-600/20 rounded-full blur-[160px] pointer-events-none" />
 
       <div className="grid lg:grid-cols-12 gap-12 items-center relative z-10">
         
-        {/* LEFT COLUMN: Agency Pitch & High-Contrast Typography */}
+        {/* LEFT COLUMN: Agency Pitch & High-Contrast Headline */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="lg:col-span-6 space-y-7"
         >
-          {/* Status Badge */}
+          {/* Status Capsule */}
           <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-slate-900/90 border border-slate-800 shadow-md backdrop-blur-md">
             <span className="relative flex h-2.5 w-2.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -78,68 +78,64 @@ export default function HeroSection({ onOpenModal }: { onOpenModal: () => void }
           </div>
         </motion.div>
 
-        {/* RIGHT COLUMN: Illuminated 3D Isometric Tech Stage Visual */}
+        {/* RIGHT COLUMN: Real 3D Globe Platform Scene with Floating Badges */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="lg:col-span-6 relative flex justify-center"
+          className="lg:col-span-6 relative flex justify-center items-center"
         >
-          {/* Main 3D Isometric Composition Stage */}
-          <div className="relative w-full max-w-[540px] h-[480px] flex items-center justify-center">
+          {/* Main 3D Visual Stage Container */}
+          <div className="relative w-full max-w-[550px] h-[480px] flex items-center justify-center">
             
-            {/* Background Radial Light Beam */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-purple-600/30 via-pink-500/20 to-indigo-600/30 rounded-[3rem] blur-2xl transform rotate-6 pointer-events-none" />
+            {/* Background Volumetric Light Glow */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-purple-600/40 via-pink-500/25 to-indigo-600/40 rounded-[3rem] blur-3xl pointer-events-none" />
 
-            {/* Glowing Neon Isometric Base Platform */}
-            <div className="relative w-[380px] h-[260px] bg-gradient-to-tr from-slate-950 via-purple-950/80 to-slate-950 border-2 border-purple-500/50 rounded-[3rem] shadow-[0_0_80px_rgba(168,85,247,0.35)] transform -rotate-12 hover:rotate-0 transition-transform duration-700 backdrop-blur-xl flex flex-col items-center justify-center p-6">
-              
-              {/* Outer Neon Orbit Ring */}
-              <div className="absolute w-[320px] h-[320px] rounded-full border border-purple-400/40 animate-[spin_16s_linear_infinite] pointer-events-none" />
-              <div className="absolute w-[260px] h-[260px] rounded-full border-2 border-dashed border-pink-400/40 animate-[spin_10s_linear_infinite_reverse] pointer-events-none" />
-
-              {/* Central Holographic Emblem */}
-              <div className="w-24 h-28 rounded-3xl bg-gradient-to-tr from-purple-600 via-pink-500 to-amber-400 p-[2px] shadow-[0_0_40px_rgba(236,72,153,0.5)] animate-bounce">
-                <div className="w-full h-full bg-slate-950 rounded-[22px] flex items-center justify-center text-amber-300">
-                  <Sparkles className="w-10 h-10 text-amber-300" />
-                </div>
-              </div>
-
+            {/* Central High-Resolution 3D Globe Visual */}
+            <div className="relative z-10 w-full h-full flex items-center justify-center">
+              <img
+                src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop"
+                alt="3D Futuristic Network Globe"
+                className="w-[85%] h-[85%] object-cover rounded-[3rem] shadow-[0_0_90px_rgba(168,85,247,0.4)] border border-purple-500/40 transform -rotate-2 hover:rotate-0 transition-transform duration-700"
+              />
             </div>
 
-            {/* Floating Glassmorphic Badge 1: Top Left Code Card */}
-            <div className="absolute top-6 left-2 bg-slate-950/90 border border-purple-500/40 px-4 py-3 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.8)] backdrop-blur-xl flex items-center gap-3 animate-pulse">
-              <div className="w-8 h-8 rounded-xl bg-purple-600/30 border border-purple-400/50 flex items-center justify-center text-purple-300 font-mono font-bold text-xs">
-                &lt;/&gt;
+            {/* FLOATING BADGE 1: Top Right Edge Deployed Pill */}
+            <div className="absolute top-4 right-2 z-20 bg-slate-950/90 border border-purple-500/50 px-4 py-3 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.8)] backdrop-blur-xl flex items-center gap-3 animate-pulse">
+              <div className="w-8 h-8 rounded-xl bg-purple-600/30 border border-purple-400/50 flex items-center justify-center text-purple-300">
+                <Zap className="w-4 h-4 text-purple-300" />
               </div>
               <div>
-                <span className="block text-[10px] font-extrabold uppercase text-slate-400">Architecture</span>
-                <span className="block text-xs font-bold text-white">Pure React & Next.js</span>
+                <span className="block text-[10px] font-extrabold uppercase text-slate-400">Edge Deployed</span>
+                <span className="block text-xs font-mono font-bold text-emerald-400">99.99% SLA Uptime</span>
               </div>
             </div>
 
-            {/* Floating Glassmorphic Badge 2: SLA Pillar Right */}
-            <div className="absolute top-20 right-0 bg-slate-950/90 border border-emerald-500/40 px-4 py-2.5 rounded-2xl shadow-2xl backdrop-blur-xl flex items-center gap-2">
-              <Zap className="w-4 h-4 text-emerald-400" />
-              <span className="text-xs font-mono font-extrabold text-emerald-400">99.99% SLA Uptime</span>
-            </div>
-
-            {/* Floating Glassmorphic Badge 3: Mobile Telemetry Frame */}
-            <div className="absolute bottom-8 right-4 bg-slate-950/90 border border-slate-800 p-4 rounded-3xl shadow-2xl backdrop-blur-xl w-44">
-              <div className="flex items-center justify-between border-b border-slate-800 pb-2 mb-2">
-                <span className="text-[9px] font-mono text-slate-400">Lighthouse</span>
-                <span className="text-[10px] font-mono font-bold text-emerald-400">100/100</span>
+            {/* FLOATING BADGE 2: Top Left Next.js Architecture */}
+            <div className="absolute top-12 left-0 z-20 bg-slate-950/90 border border-indigo-500/40 px-4 py-3 rounded-2xl shadow-2xl backdrop-blur-xl flex items-center gap-3">
+              <div className="w-8 h-8 rounded-xl bg-indigo-600/30 border border-indigo-400/50 flex items-center justify-center font-mono text-xs text-indigo-300 font-bold">
+                ⚡
               </div>
-              <div className="space-y-1.5">
-                <div className="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
-                  <div className="bg-emerald-400 h-full w-full" />
-                </div>
-                <span className="text-[9px] text-slate-400 block font-mono">Core Web Vitals SLA</span>
+              <div>
+                <span className="block text-[10px] font-extrabold uppercase text-slate-400">Framework</span>
+                <span className="block text-xs font-bold text-white">Next.js App Router</span>
               </div>
             </div>
 
-            {/* Floating Cube Accents */}
-            <div className="absolute bottom-4 left-10 w-12 h-12 bg-purple-900/60 border border-purple-500/40 rounded-xl transform rotate-45 backdrop-blur-md shadow-xl animate-pulse" />
+            {/* FLOATING BADGE 3: Bottom Left Performance Metric */}
+            <div className="absolute bottom-10 left-2 z-20 bg-slate-950/90 border border-emerald-500/40 p-3.5 rounded-2xl shadow-2xl backdrop-blur-xl">
+              <span className="text-[9px] font-extrabold uppercase text-slate-400 block mb-1">Performance</span>
+              <span className="text-xs font-mono font-bold text-emerald-400 block">100 / 100 Core Web Vitals</span>
+            </div>
+
+            {/* FLOATING BADGE 4: Bottom Right Security Shield */}
+            <div className="absolute bottom-6 right-2 z-20 bg-slate-950/90 border border-pink-500/40 px-4 py-3 rounded-2xl shadow-2xl backdrop-blur-xl flex items-center gap-2.5">
+              <Lock className="w-4 h-4 text-pink-400" />
+              <div>
+                <span className="block text-[10px] font-extrabold uppercase text-slate-400">Security</span>
+                <span className="block text-xs font-bold text-white">Zero-Plugin Protected</span>
+              </div>
+            </div>
 
           </div>
         </motion.div>
