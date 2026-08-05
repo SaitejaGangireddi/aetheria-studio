@@ -10,7 +10,6 @@ import ComparisonSection from "@/app/components/ComparisonSection";
 import DesignSystemSection from "@/app/components/DesignSystemSection";
 import ServicesSection from "@/app/components/ServicesSection";
 import ProcessSection from "@/app/components/ProcessSection";
-import SpeedAuditSection from "@/app/components/SpeedAuditSection";
 import PricingSection from "@/app/components/PricingSection";
 import InsightsSection from "@/app/components/InsightsSection";
 import Footer from "@/app/components/Footer";
@@ -32,7 +31,6 @@ export default function Home() {
         <DesignSystemSection />
         <ServicesSection />
         <ProcessSection />
-        <SpeedAuditSection />
         <PricingSection onOpenModal={() => setIsModalOpen(true)} />
         <InsightsSection />
       </main>
