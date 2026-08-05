@@ -1,13 +1,8 @@
 "use client";
 
 import React from "react";
-import {
-  Sparkles,
-  Shield,
-  Award,
-  CheckCircle2,
-  ArrowUpRight,
-} from "lucide-react";
+import Image from "next/image";
+import { Sparkles, Shield, Award } from "lucide-react";
 
 export default function FounderSection() {
   const NEW_IMAGE_URL =
@@ -18,7 +13,6 @@ export default function FounderSection() {
       id="founder"
       className="py-20 px-6 md:px-12 max-w-7xl mx-auto relative z-10 space-y-12"
     >
-      {/* Section Header */}
       <div className="text-center max-w-3xl mx-auto space-y-3">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-slate-300 text-xs font-semibold uppercase tracking-widest shadow-sm">
           <Sparkles className="w-3.5 h-3.5 text-purple-400" />
@@ -33,21 +27,20 @@ export default function FounderSection() {
         </p>
       </div>
 
-      {/* Formal Founder Card */}
       <div className="relative bg-slate-900/80 border border-slate-800/90 rounded-3xl p-8 md:p-12 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.4)]">
         <div className="grid lg:grid-cols-12 gap-10 items-center">
-          {/* Left Column: Portrait & Official Profiles */}
           <div className="lg:col-span-4 flex flex-col items-center justify-center space-y-6">
             <div className="relative w-48 h-56 sm:w-56 sm:h-64 rounded-2xl bg-slate-950 p-2 border border-slate-800/90 shadow-2xl overflow-hidden group">
-              <img
+              <Image
                 src={NEW_IMAGE_URL}
                 alt="Saiteja Gangireddi"
-                className="w-full h-full object-cover rounded-xl grayscale-[15%] group-hover:grayscale-0 transition-all duration-500"
+                fill
+                sizes="(max-width: 640px) 192px, 224px"
+                className="object-cover rounded-xl grayscale-[15%] group-hover:grayscale-0 transition-all duration-500"
               />
               <div className="absolute inset-0 rounded-xl ring-1 ring-inset ring-white/10 pointer-events-none" />
             </div>
 
-            {/* Official Social Links */}
             <div className="flex items-center gap-3">
               <a
                 href="https://linkedin.com"
@@ -65,7 +58,7 @@ export default function FounderSection() {
               </a>
 
               <a
-                href="https://github.com"
+                href="https://github.com/SaitejaGangireddi"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-slate-300 hover:text-white hover:border-purple-500/50 text-xs font-mono font-medium flex items-center gap-1.5 transition-all"
@@ -81,7 +74,6 @@ export default function FounderSection() {
             </div>
           </div>
 
-          {/* Right Column: Corporate Bio & Commitments */}
           <div className="lg:col-span-8 space-y-6">
             <div>
               <div className="flex flex-wrap items-center gap-3">
@@ -112,7 +104,6 @@ export default function FounderSection() {
               reliability for our global partners.
             </p>
 
-            {/* Structured Corporate Standards */}
             <div className="grid sm:grid-cols-2 gap-4 pt-2 border-t border-slate-800/80">
               <div className="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800/80 flex items-center gap-3">
                 <Shield className="w-5 h-5 text-purple-400 shrink-0" />

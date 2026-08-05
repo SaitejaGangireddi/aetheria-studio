@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Sparkles, ArrowRight, Menu, X } from "lucide-react";
 import { LOGO_URL } from "../constants/brand";
 
@@ -13,10 +14,13 @@ export default function Navbar({ onOpenModal }: { onOpenModal: () => void }) {
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Custom Brand Logo */}
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-9 h-9 flex items-center justify-center shrink-0">
-            <img
+          <div className="w-9 h-9 relative flex items-center justify-center shrink-0">
+            <Image
               src={LOGO_URL} 
               alt="DesignerPal Logo"
+              width={36}
+              height={36}
+              priority
               className="w-9 h-9 object-contain transition-transform group-hover:scale-105"
             />
           </div>

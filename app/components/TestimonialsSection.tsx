@@ -51,23 +51,20 @@ const testimonials: Testimonial[] = [
 export default function TestimonialsSection() {
   return (
     <section className="py-16 overflow-hidden relative z-10 border-y border-slate-800/80 bg-slate-950/50 backdrop-blur-md">
-      {/* Header */}
       <div className="text-center max-w-2xl mx-auto mb-10 px-6 space-y-2">
         <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-950/80 border border-purple-800 text-purple-300 text-[10px] font-bold uppercase tracking-wider">
           <Sparkles className="w-3 h-3 text-amber-300" />
           <span>Client Feedback</span>
         </div>
         <h2 className="text-2xl sm:text-3xl font-serif font-bold text-white tracking-tight">
-          Trusted by Clients
+          Trusted by Industry Leaders
         </h2>
       </div>
 
-      {/* Ticker Container with Gradient Fade Overlays */}
       <div className="relative w-full overflow-hidden flex group">
         <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-slate-950 to-transparent z-20 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-slate-950 to-transparent z-20 pointer-events-none" />
 
-        {/* Scrolling Cards Wrapper */}
         <div className="flex shrink-0 gap-6 animate-marquee group-hover:[animation-play-state:paused]">
           {[...testimonials, ...testimonials].map((item, idx) => (
             <div
@@ -77,7 +74,7 @@ export default function TestimonialsSection() {
               <div className="space-y-3">
                 <Quote className="w-5 h-5 text-purple-400/60" />
                 <p className="text-xs text-slate-300 leading-relaxed italic">
-                  "{item.quote}"
+                  &ldquo;{item.quote}&rdquo;
                 </p>
               </div>
 

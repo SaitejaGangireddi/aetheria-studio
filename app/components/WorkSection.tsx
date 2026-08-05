@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { ExternalLink, Zap, CheckCircle2 } from "lucide-react";
 
 interface Project {
@@ -75,22 +76,23 @@ export default function WorkSection() {
             key={idx}
             className="group relative bg-slate-900/60 border border-slate-800/80 hover:border-purple-500/50 rounded-3xl overflow-hidden backdrop-blur-xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(168,85,247,0.15)]"
           >
-            {/* Top Preview Image Container */}
             <a
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="relative w-full h-52 bg-slate-950 overflow-hidden block border-b border-slate-800/80 group/img shrink-0"
             >
-              <img
+              <Image
                 src={project.imageUrl}
                 alt={`${project.title} Preview`}
-                className="w-full h-full object-cover object-top transition-transform duration-500 group-hover/img:scale-105"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                priority={idx === 0}
+                className="object-cover object-top transition-transform duration-500 group-hover/img:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-60" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-60 pointer-events-none" />
             </a>
 
-            {/* Content Body */}
             <div className="p-6 space-y-5 flex-1 flex flex-col justify-between">
               <div className="space-y-3">
                 <div className="flex items-center justify-between">

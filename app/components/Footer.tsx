@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { MessageSquare, Mail, Phone, Sparkles } from "lucide-react";
 import { LOGO_URL } from "../constants/brand";
 
@@ -21,9 +22,7 @@ export default function Footer() {
           <p className="text-xs text-slate-400">Reach out directly via your preferred platform for instant inquiry response.</p>
         </div>
 
-        {/* Action Buttons Grid */}
         <div className="flex flex-wrap items-center justify-center gap-3">
-          {/* WhatsApp */}
           <a
             href="https://wa.me/917989919631"
             target="_blank"
@@ -34,7 +33,6 @@ export default function Footer() {
             <span>WhatsApp</span>
           </a>
 
-          {/* Email / Gmail */}
           <a
             href="mailto:saitejagangireddi@designerpal.in"
             className="px-4 py-2.5 rounded-xl bg-purple-950/80 hover:bg-purple-900/80 border border-purple-500/40 text-purple-300 font-bold text-xs flex items-center gap-2 transition-all hover:scale-105 shadow-lg"
@@ -43,7 +41,6 @@ export default function Footer() {
             <span>Email Us</span>
           </a>
 
-          {/* Call Direct */}
           <a
             href="tel:+917989919631"
             className="px-4 py-2.5 rounded-xl bg-indigo-950/80 hover:bg-indigo-900/80 border border-indigo-500/40 text-indigo-300 font-bold text-xs flex items-center gap-2 transition-all hover:scale-105 shadow-lg"
@@ -52,7 +49,6 @@ export default function Footer() {
             <span>Call Now</span>
           </a>
 
-          {/* Instagram (Inline SVG) */}
           <a
             href="https://instagram.com/designerpalstudios"
             target="_blank"
@@ -67,11 +63,16 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Main Footer Links */}
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 pt-6 border-t border-slate-800/80">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 flex items-center justify-center shrink-0">
-            <img src={LOGO_URL} alt="DesignerPal Logo" className="w-8 h-8 object-contain" />
+          <div className="w-8 h-8 relative flex items-center justify-center shrink-0">
+            <Image
+              src={LOGO_URL}
+              alt="DesignerPal Logo"
+              width={32}
+              height={32}
+              className="w-8 h-8 object-contain"
+            />
           </div>
           <span className="font-serif font-bold text-base text-white">
             Designer<span className="text-purple-400">Pal</span>
