@@ -25,7 +25,7 @@ export default function Footer() {
         <div className="flex flex-wrap items-center justify-center gap-3">
           {/* WhatsApp */}
           <a
-            href="https://wa.me/"
+            href="https://wa.me/917989919631"
             target="_blank"
             rel="noopener noreferrer"
             className="px-4 py-2.5 rounded-xl bg-emerald-950/80 hover:bg-emerald-900/80 border border-emerald-500/40 text-emerald-300 font-bold text-xs flex items-center gap-2 transition-all hover:scale-105 shadow-lg"
@@ -36,7 +36,7 @@ export default function Footer() {
 
           {/* Email / Gmail */}
           <a
-            href="mailto:contact@designerpal.in"
+            href="mailto:saitejagangireddi@designerpal.in"
             className="px-4 py-2.5 rounded-xl bg-purple-950/80 hover:bg-purple-900/80 border border-purple-500/40 text-purple-300 font-bold text-xs flex items-center gap-2 transition-all hover:scale-105 shadow-lg"
           >
             <Mail className="w-4 h-4 text-purple-400" />
@@ -45,7 +45,7 @@ export default function Footer() {
 
           {/* Call Direct */}
           <a
-            href="tel:+91"
+            href="tel:+917989919631"
             className="px-4 py-2.5 rounded-xl bg-indigo-950/80 hover:bg-indigo-900/80 border border-indigo-500/40 text-indigo-300 font-bold text-xs flex items-center gap-2 transition-all hover:scale-105 shadow-lg"
           >
             <Phone className="w-4 h-4 text-indigo-400" />
@@ -54,7 +54,7 @@ export default function Footer() {
 
           {/* Instagram (Inline SVG) */}
           <a
-            href="https://instagram.com"
+            href="https://instagram.com/designerpalstudios"
             target="_blank"
             rel="noopener noreferrer"
             className="px-4 py-2.5 rounded-xl bg-pink-950/80 hover:bg-pink-900/80 border border-pink-500/40 text-pink-300 font-bold text-xs flex items-center gap-2 transition-all hover:scale-105 shadow-lg"

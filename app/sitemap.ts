@@ -1,13 +1,13 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://workspace-alpha-drab.vercel.app";
+  const baseUrl = "https://www.designerpal.in";
 
   const routes = [
     "",
-    "/insights/nextjs-vs-wordpress-speed-audit",
-    "/insights/bento-ui-architecture-guide",
-    "/insights/high-ticket-conversion-engineering",
+    "/founders",
+    "/insights/lcp-conversions",
+    "/insights/zero-plugin-security",
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date().toISOString(),

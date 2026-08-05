@@ -1,15 +1,41 @@
 "use client";
 
 import React, { useState } from "react";
-import { Sparkles, Gauge, ArrowRight } from "lucide-react";
+import { Gauge, ArrowRight, Loader2 } from "lucide-react";
+import emailjs from "@emailjs/browser";
 
 export default function SpeedAuditSection() {
   const [url, setUrl] = useState("");
+  const [loading, setLoading] = useState(false);
   const [audited, setAudited] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (url) setAudited(true);
+    if (!url) return;
+
+    setLoading(true);
+
+    const serviceId = "service_osil00r";
+    const templateId = "template_jgxh0lt";
+    const publicKey = "KiNR_lemkHKZP5aU5";
+
+    const templateParams = {
+      from_name: "Audit Lead",
+      from_email: "audit-request@designerpal.in",
+      phone: "N/A",
+      project_type: "PageSpeed Benchmark Audit",
+      title: `PageSpeed Audit Request - ${url}`,
+      message: `Audit requested for target URL: ${url}`,
+    };
+
+    try {
+      await emailjs.send(serviceId, templateId, templateParams, { publicKey });
+      setAudited(true);
+    } catch (err) {
+      console.error("Audit request error:", err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -35,10 +61,17 @@ export default function SpeedAuditSection() {
           />
           <button
             type="submit"
+            disabled={loading}
             className="w-full sm:w-auto px-6 py-3 bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs rounded-xl flex items-center justify-center gap-2 shrink-0"
           >
-            <span>Run Audit</span>
-            <ArrowRight className="w-4 h-4" />
+            {loading ? (
+              <Loader2 className="w-4 h-4 animate-spin" />
+            ) : (
+              <>
+                <span>Run Audit</span>
+                <ArrowRight className="w-4 h-4" />
+              </>
+            )}
           </button>
         </form>
 

@@ -6,12 +6,13 @@ import HeroSection from "@/app/components/HeroSection";
 import WhyUsSection from "@/app/components/WhyUsSection";
 import WorkSection from "@/app/components/WorkSection";
 import FounderSection from "@/app/components/FounderSection";
-import ServicesSection from "@/app/components/ServicesSection";
-import ProcessSection from "@/app/components/ProcessSection";
 import ComparisonSection from "@/app/components/ComparisonSection";
 import DesignSystemSection from "@/app/components/DesignSystemSection";
-import InsightsSection from "@/app/components/InsightsSection";
+import ServicesSection from "@/app/components/ServicesSection";
+import ProcessSection from "@/app/components/ProcessSection";
+import SpeedAuditSection from "@/app/components/SpeedAuditSection";
 import PricingSection from "@/app/components/PricingSection";
+import InsightsSection from "@/app/components/InsightsSection";
 import Footer from "@/app/components/Footer";
 import ProposalModal from "@/app/components/ProposalModal";
 
@@ -31,6 +32,7 @@ export default function Home() {
         <DesignSystemSection />
         <ServicesSection />
         <ProcessSection />
+        <SpeedAuditSection />
         <PricingSection onOpenModal={() => setIsModalOpen(true)} />
         <InsightsSection />
       </main>

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Sparkles, Code2, Layout, Zap, ShieldCheck, Cpu, ArrowUpRight } from "lucide-react";
+import { Sparkles, Code2, Layout, Zap, ShieldCheck } from "lucide-react";
 
 export default function ServicesSection() {
   const services = [

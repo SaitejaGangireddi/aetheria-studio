@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://workspace-alpha-drab.vercel.app/sitemap.xml",
+    sitemap: "https://www.designerpal.in/sitemap.xml",
   };
 }

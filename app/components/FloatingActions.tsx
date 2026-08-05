@@ -7,7 +7,7 @@ export default function FloatingActions() {
     <div className="fixed right-5 bottom-1/2 translate-y-1/2 z-50 flex flex-col gap-3">
       {/* WhatsApp Floating Button */}
       <a
-        href="https://wa.me/"
+        href="https://wa.me/917989919631"
         target="_blank"
         rel="noopener noreferrer"
         className="group relative w-12 h-12 rounded-full bg-white text-emerald-600 shadow-xl flex items-center justify-center hover:scale-110 hover:bg-emerald-500 hover:text-white transition-all duration-300 border border-slate-200"
@@ -23,7 +23,7 @@ export default function FloatingActions() {
 
       {/* Phone Call Floating Button */}
       <a
-        href="tel:+91"
+        href="tel:+917075863940"
         className="group relative w-12 h-12 rounded-full bg-white text-indigo-600 shadow-xl flex items-center justify-center hover:scale-110 hover:bg-indigo-600 hover:text-white transition-all duration-300 border border-slate-200"
         aria-label="Call Us"
       >
@@ -37,7 +37,7 @@ export default function FloatingActions() {
 
       {/* Instagram Floating Button */}
       <a
-        href="https://instagram.com"
+        href="https://instagram.com/designerpalstudios"
         target="_blank"
         rel="noopener noreferrer"
         className="group relative w-12 h-12 rounded-full bg-white text-pink-600 shadow-xl flex items-center justify-center hover:scale-110 hover:bg-pink-600 hover:text-white transition-all duration-300 border border-slate-200"
@@ -53,7 +53,7 @@ export default function FloatingActions() {
 
       {/* Gmail / Email Floating Button */}
       <a
-        href="mailto:contact@designerpal.in"
+        href="mailto:saitejagangireddi@designerpal.in"
         className="group relative w-12 h-12 rounded-full bg-white text-rose-600 shadow-xl flex items-center justify-center hover:scale-110 hover:bg-rose-600 hover:text-white transition-all duration-300 border border-slate-200"
         aria-label="Email Us"
       >
