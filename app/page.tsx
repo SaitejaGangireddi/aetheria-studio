@@ -5,6 +5,7 @@ import Navbar from "@/app/components/Navbar";
 import HeroSection from "@/app/components/HeroSection";
 import WhyUsSection from "@/app/components/WhyUsSection";
 import WorkSection from "@/app/components/WorkSection";
+import TestimonialsSection from "@/app/components/TestimonialsSection";
 import FounderSection from "@/app/components/FounderSection";
 import ComparisonSection from "@/app/components/ComparisonSection";
 import DesignSystemSection from "@/app/components/DesignSystemSection";
@@ -26,6 +27,7 @@ export default function Home() {
         <HeroSection onOpenModal={() => setIsModalOpen(true)} />
         <WhyUsSection />
         <WorkSection />
+        <TestimonialsSection />
         <FounderSection />
         <ComparisonSection />
         <DesignSystemSection />
