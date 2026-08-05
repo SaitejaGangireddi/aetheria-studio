@@ -21,6 +21,11 @@ export const metadata: Metadata = {
   },
   description:
     "Custom Next.js platforms, zero-plugin web architecture, and sub-second edge experiences engineered for global scale.",
+  icons: {
+    icon: "https://res.cloudinary.com/dmkjnuolr/image/upload/v1785855698/ChatGPT_Image_Aug_4_2026_08_30_13_PM_obda5y.png",
+    shortcut: "https://res.cloudinary.com/dmkjnuolr/image/upload/v1785855698/ChatGPT_Image_Aug_4_2026_08_30_13_PM_obda5y.png",
+    apple: "https://res.cloudinary.com/dmkjnuolr/image/upload/v1785855698/ChatGPT_Image_Aug_4_2026_08_30_13_PM_obda5y.png",
+  },
   verification: {
     google: "FPEcDpLm7MqFdZJThx5CNx8xiF0BQ4qKcBV6YbzmsuI",
   },
