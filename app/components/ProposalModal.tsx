@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { X, Send, Sparkles, CheckCircle2 } from "lucide-react";
+import emailjs from "@emailjs/browser";
 
 export default function ProposalModal({
   isOpen,
@@ -18,7 +19,9 @@ export default function ProposalModal({
     projectBrief: "",
   });
 
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
 
   if (!isOpen) return null;
 
@@ -26,20 +29,39 @@ export default function ProposalModal({
     e.preventDefault();
     setStatus("loading");
 
-    try {
-      const res = await fetch("/api/send-proposal", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+    // Replace YOUR_TEMPLATE_ID and YOUR_PUBLIC_KEY below with your actual values from EmailJS dashboard
+    const serviceId = "service_osil00r";
+    const templateId = "template_jgxh0lt";
+    const publicKey = "KiNR_IemkHKZP5aU5";
 
-      if (res.ok) {
-        setStatus("success");
-      } else {
-        throw new Error("Failed to send");
-      }
-    } catch {
-      setStatus("error");
+    try {
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          phone_number: formData.phone,
+          architecture_type: formData.architectureType,
+          message: formData.projectBrief,
+          to_email: "saitejagangireddi@designerpal.in",
+        },
+        publicKey
+      );
+
+      setStatus("success");
+    } catch (err) {
+      console.error("EmailJS Error:", err);
+
+      // Fallback to mailto if EmailJS fails
+      const mailtoUrl = `mailto:saitejagangireddi@designerpal.in?subject=${encodeURIComponent(
+        `Project Inquiry from ${formData.name}`
+      )}&body=${encodeURIComponent(
+        `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nType: ${formData.architectureType}\nBrief:\n${formData.projectBrief}`
+      )}`;
+
+      window.location.href = mailtoUrl;
+      setStatus("success");
     }
   };
 
@@ -56,9 +78,11 @@ export default function ProposalModal({
         {status === "success" ? (
           <div className="text-center py-8 space-y-4">
             <CheckCircle2 className="w-12 h-12 text-emerald-400 mx-auto" />
-            <h3 className="text-2xl font-serif font-bold text-white">Inquiry Received</h3>
+            <h3 className="text-2xl font-serif font-bold text-white">
+              Inquiry Received
+            </h3>
             <p className="text-xs text-slate-300">
-              Thank you! Saiteja will review your requirements and reach out shortly.
+              Thank you! We will review your requirements and reach out shortly.
             </p>
             <button
               onClick={() => {
@@ -90,8 +114,10 @@ export default function ProposalModal({
                 required
                 type="text"
                 value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                placeholder="e.g. Mahadev Suthar"
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
+                placeholder="Enter your full name"
                 className="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white focus:outline-none focus:border-purple-500"
               />
             </div>
@@ -105,8 +131,10 @@ export default function ProposalModal({
                   required
                   type="email"
                   value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  placeholder="you@company.com"
+                  onChange={(e) =>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
+                  placeholder="name@company.com"
                   className="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white focus:outline-none focus:border-purple-500"
                 />
               </div>
@@ -119,8 +147,10 @@ export default function ProposalModal({
                   required
                   type="tel"
                   value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  placeholder="+91 98765 43210"
+                  onChange={(e) =>
+                    setFormData({ ...formData, phone: e.target.value })
+                  }
+                  placeholder="+1 (555) 000-0000"
                   className="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white focus:outline-none focus:border-purple-500"
                 />
               </div>
@@ -137,9 +167,13 @@ export default function ProposalModal({
                 }
                 className="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white focus:outline-none focus:border-purple-500"
               >
-                <option value="Custom Showcase Build">Custom Next.js Showcase Platform</option>
-                <option value="Enterprise Web App">Enterprise AgriTech / Web App</option>
-                <option value="Performance Audit">0.29s LCP Performance & Security Audit</option>
+                <option value="Custom Showcase Build">
+                  Custom Next.js Showcase Platform
+                </option>
+                <option value="Enterprise Web App">Enterprise Web App</option>
+                <option value="Performance Audit">
+                  0.29s LCP Performance & Security Audit
+                </option>
               </select>
             </div>
 
@@ -159,19 +193,15 @@ export default function ProposalModal({
               />
             </div>
 
-            {status === "error" && (
-              <p className="text-xs text-rose-400 font-semibold">
-                An error occurred. Please try submitting again.
-              </p>
-            )}
-
             <button
               type="submit"
               disabled={status === "loading"}
               className="w-full py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold text-xs rounded-xl flex items-center justify-center gap-2 hover:from-purple-500 hover:to-indigo-500 transition-all"
             >
               <Send className="w-4 h-4" />
-              <span>{status === "loading" ? "Submitting..." : "Send Proposal Brief"}</span>
+              <span>
+                {status === "loading" ? "Submitting..." : "Send Proposal Brief"}
+              </span>
             </button>
           </form>
         )}
