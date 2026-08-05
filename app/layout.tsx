@@ -21,6 +21,9 @@ export const metadata: Metadata = {
   },
   description:
     "Custom Next.js platforms, zero-plugin web architecture, and sub-second edge experiences engineered for global scale.",
+  verification: {
+    google: "FPEcDpLm7MqFdZJThx5CNx8xiF0BQ4qKcBV6YbzmsuI",
+  },
   keywords: [
     "Next.js Development Agency",
     "High Performance Web Engineering",
