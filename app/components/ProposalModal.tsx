@@ -4,8 +4,7 @@ import React, { useState } from "react";
 import { X, Sparkles, Send, CheckCircle2, Loader2, AlertCircle } from "lucide-react";
 import emailjs from "@emailjs/browser";
 
-// --- SECONDARY EMAILJS CREDENTIALS ---
-const SERVICE_ID = "service_hvyq506";
+const SERVICE_ID = "service_osil00r";
 const TEMPLATE_ID = "template_jgxh0lt";
 const PUBLIC_KEY = "KiNR_lemkHKZP5aU5";
 
@@ -18,6 +17,8 @@ export default function ProposalModal({
 }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [projectType, setProjectType] = useState("Custom Next.js Web App");
   const [scope, setScope] = useState("");
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -31,8 +32,12 @@ export default function ProposalModal({
     setErrorMsg("");
 
     const templateParams = {
+      title: `${projectType} Brief - ${name}`,
       from_name: name,
       from_email: email,
+      reply_to: email,
+      phone: phone || "Not Provided",
+      project_type: projectType,
       message: scope,
       to_name: "DesignerPal Studio",
     };
@@ -42,7 +47,9 @@ export default function ProposalModal({
         SERVICE_ID,
         TEMPLATE_ID,
         templateParams,
-        PUBLIC_KEY
+        {
+          publicKey: PUBLIC_KEY,
+        }
       );
 
       if (response.status === 200) {
@@ -51,10 +58,10 @@ export default function ProposalModal({
         throw new Error(`EmailJS responded with status ${response.status}`);
       }
     } catch (err: unknown) {
-      console.error("EmailJS Error:", err);
+      console.error("EmailJS Execution Error:", err);
       const error = err as { text?: string; message?: string };
-      const text = error?.text || error?.message || "Failed to dispatch email brief";
-      setErrorMsg(`Dispatch Error: ${text}`);
+      const text = error?.text || error?.message || "Delivery failed.";
+      setErrorMsg(`Delivery Error: ${text}`);
     } finally {
       setLoading(false);
     }
@@ -63,6 +70,7 @@ export default function ProposalModal({
   const handleReset = () => {
     setName("");
     setEmail("");
+    setPhone("");
     setScope("");
     setErrorMsg("");
     setSubmitted(false);
@@ -71,7 +79,7 @@ export default function ProposalModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md">
-      <div className="relative w-full max-w-lg bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl">
+      <div className="relative w-full max-w-lg bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl max-h-[90vh] overflow-y-auto">
         <button
           onClick={handleReset}
           className="absolute top-5 right-5 p-2 text-slate-400 hover:text-white rounded-full bg-slate-950/50 border border-slate-800 transition-colors"
@@ -85,10 +93,10 @@ export default function ProposalModal({
               <CheckCircle2 className="w-6 h-6" />
             </div>
             <h3 className="text-2xl font-serif font-bold text-white">
-              Brief Dispatched!
+              Brief Delivered Successfully!
             </h3>
             <p className="text-xs text-slate-300 max-w-sm mx-auto leading-relaxed">
-              Thank you, <span className="font-semibold text-purple-300">{name}</span>. Your brief has been sent directly to our inbox. We will review your scope and reply to <span className="font-semibold text-purple-300">{email}</span> within 24 hours.
+              Thank you, <span className="font-semibold text-purple-300">{name}</span>. Your proposal brief has been delivered directly to our inbox. We will review your scope and reply to <span className="font-semibold text-purple-300">{email}</span> within 24 hours.
             </p>
             <button
               onClick={handleReset}
@@ -105,47 +113,77 @@ export default function ProposalModal({
                 <span>Start a Project</span>
               </div>
               <h3 className="text-2xl font-serif font-bold text-white">
-                Let’s Build Something Exceptional
+                Submit Your Technical Brief
               </h3>
               <p className="text-xs text-slate-400">
-                Tell us about your target SLAs and custom feature requirements.
+                Receive an architectural proposal within 24 hours.
               </p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4 text-xs">
               <div>
-                <label className="block text-slate-300 font-semibold mb-1">Your Name</label>
+                <label className="block text-slate-300 font-semibold mb-1">Your Name *</label>
                 <input
                   type="text"
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="e.g. Alex Morgan"
+                  suppressHydrationWarning
                   className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-purple-500 transition-colors"
                 />
               </div>
 
-              <div>
-                <label className="block text-slate-300 font-semibold mb-1">Work Email</label>
-                <input
-                  type="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="alex@company.com"
-                  className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-purple-500 transition-colors"
-                />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-slate-300 font-semibold mb-1">Work Email *</label>
+                  <input
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="alex@brand.com"
+                    suppressHydrationWarning
+                    className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-purple-500 transition-colors"
+                  />
+                </div>
+                <div>
+                  <label className="block text-slate-300 font-semibold mb-1">Phone Number</label>
+                  <input
+                    type="tel"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    placeholder="+91 98765 43210"
+                    suppressHydrationWarning
+                    className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-purple-500 transition-colors"
+                  />
+                </div>
               </div>
 
               <div>
-                <label className="block text-slate-300 font-semibold mb-1">Project Scope</label>
+                <label className="block text-slate-300 font-semibold mb-1">Architecture Type</label>
+                <select
+                  value={projectType}
+                  onChange={(e) => setProjectType(e.target.value)}
+                  className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-purple-500 transition-colors"
+                >
+                  <option value="Custom Next.js Web App">Custom Next.js Web App</option>
+                  <option value="AgriTech / Multi-Catalog Portal">AgriTech / Multi-Catalog Portal</option>
+                  <option value="Bespoke Architecture Showcase">Bespoke Architecture Showcase</option>
+                  <option value="Managed Hosting & Maintenance">Managed Hosting & Maintenance</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-slate-300 font-semibold mb-1">Project Scope & Timeline *</label>
                 <textarea
                   rows={3}
                   required
                   value={scope}
                   onChange={(e) => setScope(e.target.value)}
-                  placeholder="Describe your vision, timeline, or required integrations..."
-                  className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-purple-500 transition-colors"
+                  placeholder="Tell us about your brand goals and requirements..."
+                  suppressHydrationWarning
+                  className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-purple-500 transition-colors resize-none"
                 />
               </div>
 
@@ -164,12 +202,12 @@ export default function ProposalModal({
                 {loading ? (
                   <>
                     <Loader2 className="w-4 h-4 animate-spin text-amber-300" />
-                    <span>Dispatching Brief...</span>
+                    <span>Delivering Brief...</span>
                   </>
                 ) : (
                   <>
                     <Send className="w-4 h-4" />
-                    <span>Submit Brief & Schedule Call</span>
+                    <span>Submit Proposal Brief</span>
                   </>
                 )}
               </button>
