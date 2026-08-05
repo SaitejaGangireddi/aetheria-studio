@@ -36,17 +36,10 @@ export default function ProposalModal({
       if (res.ok) {
         setStatus("success");
       } else {
-        throw new Error("Failed to send email");
+        throw new Error("Failed to send");
       }
     } catch {
-      // Direct Mailto Fallback
-      const mailtoUrl = `mailto:saitejagangireddi@designerpal.in?subject=${encodeURIComponent(
-        `Project Inquiry from ${formData.name}`
-      )}&body=${encodeURIComponent(
-        `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nType: ${formData.architectureType}\nBrief:\n${formData.projectBrief}`
-      )}`;
-      window.location.href = mailtoUrl;
-      setStatus("success");
+      setStatus("error");
     }
   };
 
@@ -165,6 +158,12 @@ export default function ProposalModal({
                 className="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white focus:outline-none focus:border-purple-500"
               />
             </div>
+
+            {status === "error" && (
+              <p className="text-xs text-rose-400 font-semibold">
+                An error occurred. Please try submitting again.
+              </p>
+            )}
 
             <button
               type="submit"
