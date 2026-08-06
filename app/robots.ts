@@ -5,6 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
+      disallow: "/api/", // Stops search bots from crawling API endpoints
     },
     sitemap: "https://www.designerpal.in/sitemap.xml",
   };
